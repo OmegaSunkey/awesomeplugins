@@ -40,4 +40,4 @@ private fun startupdiscord() {
         // Remove all patches
         patcher.unpatchAll()
     }
-} //literally c+p from animal's repo lmao how do i build on github help
+} // literally c+p from animal's repo lmao how do i build on github help
