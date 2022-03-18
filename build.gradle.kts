@@ -40,9 +40,9 @@ subprojects {
 
     // Fill out with your info
     aliucord {
-        author("DISCORD USERNAME", 123456789L)
-        updateUrl.set("https://raw.githubusercontent.com/USERNAME/REPONAME/builds/updater.json")
-        buildUrl.set("https://raw.githubusercontent.com/USERNAME/REPONAME/builds/%s.zip")
+        author("OmegaSunkey", 9366)
+        updateUrl.set("https://raw.githubusercontent.com/OmegaSunkey/awesomeplugins/builds/updater.json")
+        buildUrl.set("https://raw.githubusercontent.com/OmegaSunkey/awesomeplugins/builds/%s.zip")
     }
 
     android {
