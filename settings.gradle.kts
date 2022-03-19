@@ -5,6 +5,6 @@ rootProject.name = "awesomeplugins"
 
 // Plugins are included like this
 include(
-    "Startup_Sound"
+    "StartupSound"
 )
 
