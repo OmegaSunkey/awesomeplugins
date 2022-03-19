@@ -1,10 +1,10 @@
 version = "1.0.0" // Plugin version. Increment this to trigger the updater
-description = "My first patch!" // Plugin description that will be shown to user
+description = "Startup sound for discord!" // Plugin description that will be shown to user
 
 aliucord {
     // Changelog of your plugin
     changelog.set("""
-        Some changelog
+        nothing to see here now
     """.trimIndent())
     // Image or Gif that will be shown at the top of your changelog page
     // changelogMedia.set("https://cool.png")
@@ -15,5 +15,5 @@ aliucord {
 
     // Excludes this plugin from the updater, meaning it won't show up for users.
     // Set this if the plugin is unfinished
-    excludeFromUpdaterJson.set(true)
+    excludeFromUpdaterJson.set(false)
 }
