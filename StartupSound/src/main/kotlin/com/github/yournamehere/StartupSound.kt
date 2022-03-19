@@ -11,7 +11,7 @@ import com.aliucord.entities.Plugin
 import com.aliucord.patcher.*
 
 @AliucordPlugin(requiresRestart = false)
-class MyFirstPatch : Plugin() {
+class StartupSound : Plugin() {
     override fun start(context: Context) {
         startupdiscord()
     }
