@@ -32,7 +32,7 @@ private fun startupdiscord() {
                 }
             }
         } catch (ignored: Throwable) {
-            // ill leave this empty
+            logger.error("Failed to play sound", err)
         }
     }
 
