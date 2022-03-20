@@ -31,8 +31,8 @@ private fun startupdiscord() {
                     start()
                 }
             }
-        } catch (ignored: Throwable) {
-            //not dealing rn
+        } catch (e: Throwable) {
+            logger.error("UNABLE to play audio", e)
         }
     }
 
