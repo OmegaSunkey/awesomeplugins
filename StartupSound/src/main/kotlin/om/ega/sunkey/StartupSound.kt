@@ -1,4 +1,4 @@
-package com.github.yournamehere
+package om.ega.sunkey
 
 import android.content.Context
 import android.media.AudioAttributes
