@@ -31,7 +31,7 @@ private fun startupdiscord() {
                     start()
                 }
             }
-        } catch (e: Exception) {
+        } catch (e: err) {
             logger.error("Failed to play sound", err)
         }
     }
