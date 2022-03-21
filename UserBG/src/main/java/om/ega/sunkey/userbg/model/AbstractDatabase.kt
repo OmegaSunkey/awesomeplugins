@@ -37,7 +37,7 @@ abstract class AbstractDatabase() {
         }
     }
 
-    fun downloadDB(cachedFile: File)
+    fun downloadDB(cachedFile: File {)
     Utils.threadPool.execute {
 	    {
         UserBG.log.debug("Downloading $name database...")
@@ -48,7 +48,7 @@ abstract class AbstractDatabase() {
         UserBG.log.debug("Updated $name database.")
     }
     }
-
+}
     private fun loadFromCache(it: File): String {
         return String(IOUtils.readBytes(FileInputStream(it)))
     }
