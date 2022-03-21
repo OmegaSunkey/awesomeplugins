@@ -5,6 +5,7 @@ import com.aliucord.Utils
 import com.aliucord.api.PatcherAPI
 import com.aliucord.api.SettingsAPI
 import com.aliucord.patcher.Hook
+import com.aliucord.patcher.before
 import com.discord.utilities.icon.IconUtils
 import com.discord.widgets.user.profile.UserProfileHeaderViewModel
 import java.util.regex.Pattern
