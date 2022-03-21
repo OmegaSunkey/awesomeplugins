@@ -39,14 +39,12 @@ abstract class AbstractDatabase() {
 
     fun downloadDB(cachedFile: File) {
     Utils.threadPool.execute {
-	    {
         UserBG.log.debug("Downloading $name database...")
         Http.simpleDownload(url, cachedFile)
         UserBG.log.debug("Downloaded $name database.")
 
         data = loadFromCache(cachedFile)
         UserBG.log.debug("Updated $name database.")
-    }
     }
 }
     private fun loadFromCache(it: File): String {
