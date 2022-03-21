@@ -17,11 +17,11 @@ abstract class AbstractDatabase() {
     abstract val mapCache: MutableMap<Long, *>
     abstract val name: String
 
-    open fun init(ctx: Context, settings: SettingsAPI, patcher: PatcherAPI) {
+    open fun init(ctx: Context, settings: SettingsAPI, patcher: PatcherAPI) { Utils.threadPool.execute {
         loadDB(ctx, settings)
         runPatches(patcher, settings)
     }
-
+}
     private fun loadDB(ctx: Context, settings: SettingsAPI) {
         Utils.threadPool.execute {
             getCacheFile(ctx).let {
