@@ -50,10 +50,8 @@ object USRBG : AbstractDatabase() {
         )
 
         if (PluginManager.isPluginEnabled("ViewProfileImages")) { // this code gets banner and makes it viewable ven
-            patcher.patch(
-                UserProfileHeaderViewModel.ViewState.Loaded::class.java.getDeclaredMethod(
-                    "getBanner"
-                ), Hook {
+            patcher.before<UserProfileHeaderViewModel>("getBanner")(
+                Hook {
                     val user =
                         (it.thisObject as UserProfileHeaderViewModel.ViewState.Loaded).user
                     if (it.result == null && mapCache.containsKey(user.id) && settings.getBool(
