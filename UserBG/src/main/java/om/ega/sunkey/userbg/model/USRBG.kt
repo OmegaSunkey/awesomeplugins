@@ -47,7 +47,7 @@ object USRBG : AbstractDatabase() {
             }
         )
 
-        if (PluginManager.isPluginEnabled("ViewProfileImages")) { // inb4 ven asks what the hell im doing
+        if (PluginManager.isPluginEnabled("ViewProfileImages")) { // this code gets banner and makes it viewable ven
             patcher.patch(
                 UserProfileHeaderViewModel.ViewState.Loaded::class.java.getDeclaredMethod(
                     "getBanner"
