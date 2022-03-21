@@ -22,7 +22,7 @@ object APFP : AbstractDatabase() {
 
     override val mapCache: MutableMap<Long, PFP> = HashMap()
     override val name: String = "APFP"
-
+    data class PFP(val static: String, val animated: String)
     override fun runPatches(patcher: PatcherAPI, settings: SettingsAPI) {
         patcher.patch(
             IconUtils::class.java.getDeclaredMethod(
@@ -68,5 +68,4 @@ object APFP : AbstractDatabase() {
             })
     }
 
-    data class PFP(val static: String, val animated: String)
 }
