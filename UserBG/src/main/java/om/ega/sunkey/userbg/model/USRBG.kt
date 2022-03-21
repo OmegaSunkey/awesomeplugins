@@ -17,7 +17,8 @@ object USRBG : AbstractDatabase() {
     override val mapCache: MutableMap<Long, String> = HashMap()
     override val name: String = "USRBG"
 
-    override fun runPatches(patcher: PatcherAPI, settings: SettingsAPI) {
+    override fun runPatches(patcher: PatcherAPI, settings: SettingsAPI) { 
+	    Utils.threadPool.execute {
         patcher.patch(
             IconUtils::class.java.getDeclaredMethod(
                 "getForUserBanner",
@@ -62,7 +63,7 @@ object USRBG : AbstractDatabase() {
                 })
         }
     }
-
+ }
     private val bannerMatch =
         Pattern.compile("^https://cdn.discordapp.com/banners/\\d+/[a-z0-9_]+\\.\\w{3,5}\\?size=\\d+$")
 }
