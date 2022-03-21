@@ -17,8 +17,10 @@ class UserBG : Plugin() {
     }
     @Throws(NoSuchMethodException::class)
     override fun start(ctx: Context) {
-        USRBG.init(ctx, settings, patcher)
+        Utils.threadPool.execute {
+	USRBG.init(ctx, settings, patcher)
         APFP.init(ctx, settings, patcher)
+        }
     }
 
     override fun stop(ctx: Context) {
