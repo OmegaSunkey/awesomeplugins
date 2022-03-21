@@ -5,7 +5,6 @@ import com.aliucord.Utils
 import com.aliucord.api.PatcherAPI
 import com.aliucord.api.SettingsAPI
 import com.aliucord.patcher.Hook
-import com.aliucord.patcher.before
 import com.discord.utilities.icon.IconUtils
 import com.discord.widgets.user.profile.UserProfileHeaderViewModel
 import java.util.regex.Pattern
@@ -51,8 +50,10 @@ object USRBG : AbstractDatabase() {
         )
 
         if (PluginManager.isPluginEnabled("ViewProfileImages")) { // this code gets banner and makes it viewable ven
-            patcher.before<UserProfileHeaderViewModel>("getBanner")(
-                Hook {
+            patcher.patch(
+		 UserProfileHeaderViewModel.ViewState.Loaded::class.java.getDeclaredMethod(
+		    "getBanner"
+		 ), Hook {
                     val user =
                         (it.thisObject as UserProfileHeaderViewModel.ViewState.Loaded).user
                     if (it.result == null && mapCache.containsKey(user.id) && settings.getBool(
