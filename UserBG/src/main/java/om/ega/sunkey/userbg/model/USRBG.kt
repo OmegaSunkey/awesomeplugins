@@ -50,6 +50,7 @@ object USRBG : AbstractDatabase() {
         )
 
         if (PluginManager.isPluginEnabled("ViewProfileImages")) { // this code gets banner and makes it viewable ven
+	Utils.threadPool.execute {
             patcher.patch(
 		 UserProfileHeaderViewModel.ViewState.Loaded::class.java.getDeclaredMethod(
 		    "getBanner"
@@ -62,7 +63,8 @@ object USRBG : AbstractDatabase() {
                         )
                     ) it.result = "https://usrbg.cumcord.com/"
                 })
-        }
+       }
+     }
     }
  }
     private val bannerMatch =
