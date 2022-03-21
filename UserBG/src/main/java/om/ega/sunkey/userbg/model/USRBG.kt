@@ -18,8 +18,7 @@ object USRBG : AbstractDatabase() {
     override val mapCache: MutableMap<Long, String> = HashMap()
     override val name: String = "USRBG"
 
-    override fun runPatches(patcher: PatcherAPI, settings: SettingsAPI) { 
-	    Utils.threadPool.execute {
+    override fun runPatches(patcher: PatcherAPI, settings: SettingsAPI) {
         patcher.patch(
             IconUtils::class.java.getDeclaredMethod(
                 "getForUserBanner",
@@ -28,11 +27,13 @@ object USRBG : AbstractDatabase() {
                 Integer::class.java,
                 Boolean::class.javaPrimitiveType
             ), Hook {
+		    Utils.threadPool.execute {
                 if (it.result != null && settings.getBool(
                         "nitroBanner",
                         true
                     ) && bannerMatch.matcher(it.result.toString()).find()
                 ) return@Hook   // could not get USRBG database in time or wasn't available
+
                 val id = it.args[0] as Long
                 if (mapCache.containsKey(id)) it.result = mapCache[id] else {
                     val matcher = Pattern.compile(
@@ -46,15 +47,16 @@ object USRBG : AbstractDatabase() {
                         }
                     }
                 }
+ 	      }
             }
         )
 
         if (PluginManager.isPluginEnabled("ViewProfileImages")) { // this code gets banner and makes it viewable ven
-	Utils.threadPool.execute {
             patcher.patch(
 		 UserProfileHeaderViewModel.ViewState.Loaded::class.java.getDeclaredMethod(
 		    "getBanner"
 		 ), Hook {
+			 Utils.threadPool.execute {
                     val user =
                         (it.thisObject as UserProfileHeaderViewModel.ViewState.Loaded).user
                     if (it.result == null && mapCache.containsKey(user.id) && settings.getBool(
@@ -65,7 +67,6 @@ object USRBG : AbstractDatabase() {
                 })
        }
      }
-    }
  }
     private val bannerMatch =
         Pattern.compile("^https://cdn.discordapp.com/banners/\\d+/[a-z0-9_]+\\.\\w{3,5}\\?size=\\d+$")
