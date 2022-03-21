@@ -5,7 +5,7 @@ import com.aliucord.Http
 import com.aliucord.Utils
 import com.aliucord.api.PatcherAPI
 import com.aliucord.api.SettingsAPI
-import com.aliucord.plugins.userbg.UserBG
+import om.ega.sunkey.userbg.UserBG
 import com.aliucord.utils.IOUtils
 import java.io.File
 import java.io.FileInputStream
