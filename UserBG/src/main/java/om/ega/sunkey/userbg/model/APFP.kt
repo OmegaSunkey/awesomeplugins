@@ -5,6 +5,7 @@ import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.OvalShape
 import android.widget.ImageView
 import com.aliucord.api.PatcherAPI
+import com.aliucord.Utils
 import com.aliucord.api.SettingsAPI
 import com.aliucord.patcher.Hook
 import com.discord.utilities.icon.IconUtils
@@ -58,7 +59,7 @@ object APFP : AbstractDatabase() {
         patcher.patch(
             IconUtils::class.java.getDeclaredMethod("setIcon", ImageView::class.java, String::class.java, Int::class.javaPrimitiveType, Int::class.javaPrimitiveType, Boolean::class.javaPrimitiveType, Function1::class.java, MGImages.ChangeDetector::class.java), Hook {
 		    Utils.threadPool.execute {
-                if ((it.args[1] as String).contains("https://cdn.discordapp.com/role-icons")) return@executw
+                if ((it.args[1] as String).contains("https://cdn.discordapp.com/role-icons")) return@execute
 
                 val simpleDraweeView = it.args[0] as SimpleDraweeView
                 simpleDraweeView.apply {
