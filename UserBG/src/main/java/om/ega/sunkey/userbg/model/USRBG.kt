@@ -65,8 +65,7 @@ object USRBG : AbstractDatabase() {
                         )
                     ) it.result = "https://usrbg.cumcord.com/"
                 }
-	   )
-       }
+	 })
      }
  }
     private val bannerMatch =
