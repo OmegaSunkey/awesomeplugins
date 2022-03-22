@@ -12,7 +12,7 @@ import java.util.regex.Pattern
 
 object USRBG : AbstractDatabase() {
     override val regex: String = ".*?\\(\"(.*?)\""
-    override val url: String = "https://discord-custom-covers.github.io/usrbg/dist/usrbg.css"
+    override val url: String = "https://raw.githubusercontent.com/Discord-Custom-Covers/usrbg/master/dist/usrbg.json"
 
     override var data: String = ""
 
@@ -33,7 +33,7 @@ object USRBG : AbstractDatabase() {
                         "nitroBanner",
                         true
                     ) && bannerMatch.matcher(it.result.toString()).find()
-                ) return@execute   // could not get USRBG database in time or wasn't available
+                ) return@Hook   // could not get USRBG database in time or wasn't available
 
                 val id = it.args[0] as Long
                 if (mapCache.containsKey(id)) it.result = mapCache[id] else {
@@ -47,7 +47,7 @@ object USRBG : AbstractDatabase() {
                             it.result = it1
                         }
                     }
-                } UserBG.log.debug("Updated database.")
+                } 
             }
         )
 

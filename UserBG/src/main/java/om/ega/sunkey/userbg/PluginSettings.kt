@@ -12,7 +12,6 @@ import com.discord.views.CheckedSetting
 import com.aliucord.PluginManager
 import com.aliucord.Utils
 import com.aliucord.fragments.SettingsPage
-import om.ega.sunkey.userbg.model.APFP
 import com.aliucord.views.Button
 import com.discord.utilities.view.text.TextWatcher
 import java.lang.Exception
@@ -22,7 +21,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
         super.onViewBound(view)
         setActionBarTitle("UserBG")
         val textInput = TextInput(view.context)
-        textInput.hint = "Refresh UserBG database time (minutes)"
+        //textInput.hint = "Refresh UserBG database time (minutes)" ven will fix texthint
         textInput.editText.setText(
             settings.getLong("cacheTime", UserBG.REFRESH_CACHE_TIME).toString()
         )
