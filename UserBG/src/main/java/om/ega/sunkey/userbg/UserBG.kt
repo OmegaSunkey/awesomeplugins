@@ -17,11 +17,9 @@ class UserBG : Plugin() {
         APFP = om.ega.sunkey.userbg.model.APFP
     }
     @Throws(NoSuchMethodException::class)
-    override fun start(ctx: Context) {
-        Utils.threadPool.execute {
+    override fun start(ctx: Context){ 
 	USRBG.init(ctx, settings, patcher)
         APFP.init(ctx, settings, patcher)
-        }
     }
 
     override fun stop(ctx: Context) {
