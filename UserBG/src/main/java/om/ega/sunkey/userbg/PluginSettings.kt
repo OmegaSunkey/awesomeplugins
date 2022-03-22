@@ -26,8 +26,8 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
         textInput.editText!!.setText(
             settings.getLong("cacheTime", UserBG.REFRESH_CACHE_TIME).toString()
         )
-        textInput.editText!!.inputType = InputType.TYPE_CLASS_NUMBER
-        textInput.editText!!.addTextChangedListener(object : TextWatcher() {
+        textInput.editText.inputType = InputType.TYPE_CLASS_NUMBER
+        textInput.editText.addTextChangedListener(object : TextWatcher() {
             override fun afterTextChanged(editable: Editable) {
                 try {
                     if (java.lang.Long.valueOf(editable.toString()) != 0L) settings.setLong(
@@ -41,7 +41,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
         })
         val refreshCache = Button(view.context)
         refreshCache.text = "Redownload databases"
-        refreshCache.setOnClickListener { button: View? ->
+        refreshCache.setOnClickListener { Button: View? ->
             Utils.threadPool.execute {
                 Utils.showToast("Downloading databases...")
                 context?.let { UserBG.USRBG.getCacheFile(it) }?.let { UserBG.USRBG.downloadDB(it) }
