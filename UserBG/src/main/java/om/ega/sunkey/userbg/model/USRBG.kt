@@ -56,7 +56,6 @@ object USRBG : AbstractDatabase() {
 		 UserProfileHeaderViewModel.ViewState.Loaded::class.java.getDeclaredMethod(
 		    "getBanner"
 		 ), Hook {
-			 Utils.threadPool.execute {
                     val user =
                         (it.thisObject as UserProfileHeaderViewModel.ViewState.Loaded).user
                     if (it.result == null && mapCache.containsKey(user.id) && settings.getBool(
@@ -64,7 +63,6 @@ object USRBG : AbstractDatabase() {
                             true
                         )
                     ) it.result = "https://usrbg.cumcord.com/"
-                }
 	 })
      }
  }
