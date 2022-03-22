@@ -25,7 +25,7 @@ public class UserBG extends Plugin {
     public final static long REFRESH_CACHE_TIME = 6*60;
 
     private static final Pattern bannerMatch = Pattern.compile("^https://cdn.discordapp.com/banners/\\d+/[a-z0-9_]+\\.\\w{3,5}\\?size=\\d+$");
-    private static final String url = "https://discord-custom-covers.github.io/usrbg/dist/usrbg.css";
+    private static final String url = "https://raw.githubusercontent.com/Discord-Custom-Covers/usrbg/master/dist/usrbg.json";
     private final String regex = ".*?\\(\"(.*?)\"";
     private static String css;
     private static final Logger log = new Logger();
