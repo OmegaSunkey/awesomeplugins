@@ -27,7 +27,7 @@ object USRBG : AbstractDatabase() {
                 Integer::class.java,
                 Boolean::class.javaPrimitiveType
             ), Hook {
-		    Utils.threadPool.execute {
+		
                 if (it.result != null && settings.getBool(
                         "nitroBanner",
                         true
@@ -47,7 +47,6 @@ object USRBG : AbstractDatabase() {
                         }
                     }
                 }
- 	      }
             }
         )
 
