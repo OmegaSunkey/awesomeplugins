@@ -12,7 +12,7 @@ import java.util.regex.Pattern
 
 object USRBG : AbstractDatabase() {
     override val regex: String = ".*?\\(\"(.*?)\""
-    override val url: String = "https://raw.githubusercontent.com/Discord-Custom-Covers/usrbg/master/dist/usrbg.json"
+    override val url: String = "https://discord-custom-covers.github.io/usrbg/dist/usrbg.css"
 
     override var data: String = ""
 
@@ -45,6 +45,7 @@ object USRBG : AbstractDatabase() {
                         matcher.group(1)?.let { it1 ->
                             mapCache[id] = it1
                             it.result = it1
+			    UserBG.log.debug(it1.toString())
                         }
                     }
                 } 
