@@ -32,7 +32,7 @@ object USRBG : AbstractDatabase() {
                         "nitroBanner",
                         true
                     ) && bannerMatch.matcher(it.result.toString()).find()
-                ) return@Hook   // could not get USRBG database in time or wasn't available
+                ) return@execute   // could not get USRBG database in time or wasn't available
 
                 val id = it.args[0] as Long
                 if (mapCache.containsKey(id)) it.result = mapCache[id] else {
@@ -64,7 +64,8 @@ object USRBG : AbstractDatabase() {
                             true
                         )
                     ) it.result = "https://usrbg.cumcord.com/"
-                })
+                }
+	   )
        }
      }
  }
