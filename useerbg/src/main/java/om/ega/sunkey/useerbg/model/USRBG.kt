@@ -36,6 +36,7 @@ object USRBG : AbstractDatabase() {
                 ) return@Hook   // could not get USRBG database in time or wasn't available
 
                 val id = it.args[0] as Long
+		usrbg.log.debug(it.args.toString() + " it args array")
                 if (mapCache.containsKey(id)) it.result = mapCache[id] else {
                     val matcher = Pattern.compile(
                         id.toString() + regex,
