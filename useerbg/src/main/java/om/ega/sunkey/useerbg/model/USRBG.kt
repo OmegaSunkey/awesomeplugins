@@ -42,9 +42,10 @@ object USRBG : AbstractDatabase() {
 		usrbg.log.debug(it.args[2].toString() + " it args 2")
 		usrbg.log.debug(id.toString() + " id")
 		usrbg.log.debug(it.result.toString() + " result")
-                if (mapCache.containsKey(id)) it.result = mapCache[id] else {
+                if (!mapCache.containsKey(id)) it.result = mapCache[id] else {
                     val matcher = Pattern.compile(
-                        id.toString() + regex
+                        id.toString() + regex,
+			Pattern.DOTALL
                     ).matcher(data)
                     if (matcher.find()) {
                         matcher.group(1)?.let { it1 ->
