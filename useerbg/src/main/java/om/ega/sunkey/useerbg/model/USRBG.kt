@@ -46,6 +46,7 @@ object USRBG : AbstractDatabase() {
                     val matcher = Pattern.compile(
                         id.toString() + regex,
 			Pattern.DOTALL
+			usrbg.log.debug("this block is executing")
                     ).matcher(data)
                     if (matcher.find()) {
                         matcher.group(1)?.let { it1 ->
