@@ -35,7 +35,7 @@ object USRBG : AbstractDatabase() {
                     ) && bannerMatch.matcher(it.result.toString()).find()
                 ) return@Hook   // could not get USRBG database in time or wasn't available
 
-                val id = it.args[1] as Long
+                val id = it.args[0] as Long
 		usrbg.log.debug(it.args.toString() + " it args array")
 		usrbg.log.debug(id.toString() + " id")
 		usrbg.log.debug(it.result.toString() + " result")
