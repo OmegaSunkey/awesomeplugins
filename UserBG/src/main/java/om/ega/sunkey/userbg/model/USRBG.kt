@@ -45,10 +45,10 @@ object USRBG : AbstractDatabase() {
                         matcher.group(1)?.let { it1 ->
                             mapCache[id] = it1
                             it.result = it1
-			    UserBG.log.debug(it1.toString())
-			    UserBG.log.debug(it.result.toString())
-			    UserBG.log.debug(id.toString())                                
-			    UserBG.log.debug(it.args[0].toString())
+			    UserBG.log.debug(it1.toString() + "it1")
+			    UserBG.log.debug(it.result.toString() + "itresult")
+			    UserBG.log.debug(id.toString() + "id")                                
+			    UserBG.log.debug(it.args[0].toString() + "itargs0")
                         }
                     }
                 } 
