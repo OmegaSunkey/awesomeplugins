@@ -1,4 +1,4 @@
-package om.ega.sunkey.usrbg
+package om.ega.sunkey.useerbg
 
 import android.content.Context
 import com.aliucord.Utils.createCheckedSetting
@@ -23,7 +23,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
         val textInput = TextInput(view.context)
         //textInput.hint = "Refresh UserBG database time (minutes)" ven will fix texthint
         textInput.editText.setText(
-            settings.getLong("cacheTime", UserBG.REFRESH_CACHE_TIME).toString()
+            settings.getLong("cacheTime", usrbg.REFRESH_CACHE_TIME).toString()
         )
         textInput.editText.inputType = InputType.TYPE_CLASS_NUMBER
         textInput.editText.addTextChangedListener(object : TextWatcher() {
@@ -43,7 +43,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
         refreshCache.setOnClickListener { Button: View? ->
             Utils.threadPool.execute {
                 Utils.showToast("Downloading databases...")
-                context?.let { usrbg.USRBG.getCacheFile(it) }?.let { UserBG.USRBG.downloadDB(it) }
+                context?.let { usrbg.USRBG.getCacheFile(it) }?.let { usrbg.USRBG.downloadDB(it) }
                 Utils.showToast("Downloaded databases.")
             }
         }

@@ -1,11 +1,11 @@
-package om.ega.sunkey.usrbg.model
+package om.ega.sunkey.useerbg.model
 
 import android.content.Context
 import com.aliucord.Http
 import com.aliucord.Utils
 import com.aliucord.api.PatcherAPI
 import com.aliucord.api.SettingsAPI
-import om.ega.sunkey.usrbg.usrbg
+import om.ega.sunkey.useerbg.usrbg
 import com.aliucord.utils.IOUtils
 import java.io.File
 import java.io.FileInputStream

@@ -1,9 +1,9 @@
-package om.ega.sunkey.usrbg.model
+package om.ega.sunkey.useerbg.model
 
 import com.aliucord.PluginManager
 import com.aliucord.Utils
 import com.aliucord.api.PatcherAPI
-import om.ega.sunkey.usrbg.usrbg
+import om.ega.sunkey.useerbg.usrbg
 import com.aliucord.api.SettingsAPI
 import com.aliucord.patcher.Hook
 import com.discord.utilities.icon.IconUtils

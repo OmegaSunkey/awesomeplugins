@@ -1,18 +1,18 @@
-package om.ega.sunkey.usrbg
+package om.ega.sunkey.useerbg
 
 import android.content.Context
 import com.aliucord.Logger
 import com.aliucord.Utils
 import com.aliucord.annotations.AliucordPlugin
 import com.aliucord.entities.Plugin
-import om.ega.sunkey.usrbg.model.AbstractDatabase
-import om.ega.sunkey.usrbg.model.USRBG
+import om.ega.sunkey.useerbg.model.AbstractDatabase
+import om.ega.sunkey.useerbg.model.USRBG
 import kotlin.Throws
 
 @AliucordPlugin
-class UserBG : Plugin() {
+class usrbg : Plugin() {
     init {
-        USRBG = om.ega.sunkey.usrbg.model.USRBG
+        USRBG = om.ega.sunkey.useerbg.model.USRBG
     }
     @Throws(NoSuchMethodException::class)
     override fun start(ctx: Context){ 
