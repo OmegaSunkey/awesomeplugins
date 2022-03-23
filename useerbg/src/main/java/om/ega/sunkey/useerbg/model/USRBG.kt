@@ -41,7 +41,7 @@ object USRBG : AbstractDatabase() {
 		usrbg.log.debug(it.args[1].toString() + " it args 1")
 		usrbg.log.debug(it.args[2].toString() + " it args 2")
 		usrbg.log.debug(id.toString() + " id")
-                if (mapCache.!containsKey(id)) it.result = mapCache[id] else {
+                if !(mapCache.containsKey(id)) it.result = mapCache[id] else {
 			usrbg.log.debug("this block is executing")
                     val matcher = Pattern.compile(
                         id.toString() + regex,
