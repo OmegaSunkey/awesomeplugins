@@ -47,7 +47,7 @@ object USRBG : AbstractDatabase() {
                         id.toString() + regex
                     ).matcher(data)
                     if (matcher.find()) {
-                        matcher.group(2)?.let { it1 ->
+                        matcher.group(1)?.let { it1 ->
                             mapCache[id] = it1
                             it.result = it1
 			    usrbg.log.debug(it1.toString() + "it1")
@@ -55,7 +55,9 @@ object USRBG : AbstractDatabase() {
 			    usrbg.log.debug(id.toString() + "id")                                
 			    usrbg.log.debug(it.args[1].toString() + "itargs0")
                         }
-                    }
+                    } else {
+			    it.result = "https://media.discordapp.net/attachments/929565544334647356/956283792333615175/Screenshot_20220322-224827638.jpg"
+		    }
                 } 
             }
         )
