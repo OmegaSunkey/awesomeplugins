@@ -45,8 +45,8 @@ object USRBG : AbstractDatabase() {
 			id.toString() + regex,
 			Pattern.DOTALL
 		).matcher(data)
-                if (mapCache.containsKey(id)) {
-			it.result = mapCache[id] 
+		usrbg.log.debug(data.toString() + " data")
+                if (mapCache.containsKey(id)) { 
 			usrbg.log.debug("this block is executing") 
                     if (matcher.find()) {
                         matcher.group(1)?.let { it1 ->
