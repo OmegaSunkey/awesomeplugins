@@ -37,6 +37,7 @@ object USRBG : AbstractDatabase() {
 
                 val id = it.args[1] as Long
 		usrbg.log.debug(it.args.toString() + " it args array")
+		usrbg.log.debug(it.args[0].toString it.args[1].toString it.args[2].toString + " it args 0 1 2")
 		usrbg.log.debug(id.toString() + " id")
 		usrbg.log.debug(it.result.toString() + " result")
                 if (mapCache.containsKey(id)) it.result = mapCache[id] else {
@@ -45,7 +46,7 @@ object USRBG : AbstractDatabase() {
                         Pattern.DOTALL
                     ).matcher(data)
                     if (matcher.find()) {
-                        matcher.group(2)?.let { it1 ->
+                        matcher.group(3)?.let { it1 ->
                             mapCache[id] = it1
                             it.result = it1
 			    usrbg.log.debug(it1.toString() + "it1")
