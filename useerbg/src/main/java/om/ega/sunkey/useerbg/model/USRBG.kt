@@ -35,7 +35,7 @@ object USRBG : AbstractDatabase() {
                     ) && bannerMatch.matcher(it.result.toString()).find()
                 ) return@Hook   // could not get USRBG database in time or wasn't available
 
-                val id = it.args[1].toLong()
+                val id = it.args[0].toLong()
 		usrbg.log.debug(it.args.toString() + " it args array")
 		usrbg.log.debug(it.args[0].toString() + " it args 0") 
 		usrbg.log.debug(it.args[1].toString() + " it args 1")
@@ -48,7 +48,7 @@ object USRBG : AbstractDatabase() {
                         Pattern.DOTALL
                     ).matcher(data)
                     if (matcher.find()) {
-                        matcher.group(3)?.let { it1 ->
+                        matcher.group(1)?.let { it1 ->
                             mapCache[id] = it1
                             it.result = it1
 			    usrbg.log.debug(it1.toString() + "it1")
