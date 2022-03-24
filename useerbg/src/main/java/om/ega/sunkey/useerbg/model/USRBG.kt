@@ -49,7 +49,7 @@ object USRBG : AbstractDatabase() {
 				Pattern.DOTALL
 			).matcher(data)
                     if (matcher.find()) {
-                        matcher.group(1)?.let { it1 ->
+                        matcher.group()?.let { it1 ->
                             mapCache[id] = it1
                             it.result = it1
 			    usrbg.log.debug(matcher.group(0).toString() + " matchergroup0")
