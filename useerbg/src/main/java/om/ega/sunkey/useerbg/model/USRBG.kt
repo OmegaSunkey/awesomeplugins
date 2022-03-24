@@ -48,8 +48,8 @@ object USRBG : AbstractDatabase() {
 				id.toString() + regex,
 				Pattern.DOTALL
 			).matcher(data)
-			matcher.find()
-			usrbg.log.debug(matcher.find().toString() + " matcherfind")
+			matcher.find(data)
+			usrbg.log.debug(matcher.find(data).toString() + " matcherfind")
                     if (matcher.find()) {
                         matcher.group(1)?.let { it1 ->
                             mapCache[id] = it1
@@ -63,6 +63,7 @@ object USRBG : AbstractDatabase() {
                         }
                     } else {
 			    it.result = "https://media.discordapp.net/attachments/929565544334647356/956283792333615175/Screenshot_20220322-224827638.jpg"
+			    usrbg.log.debug("you didnt find you dumb")
 		    }
 	        }
             }
