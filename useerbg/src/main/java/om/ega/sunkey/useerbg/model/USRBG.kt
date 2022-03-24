@@ -18,6 +18,8 @@ object USRBG : AbstractDatabase() {
 
     override val mapCache: MutableMap<Long, String> = HashMap()
     override val name: String = "USRBG"
+    
+    val testing = ""
 
     override fun runPatches(patcher: PatcherAPI, settings: SettingsAPI) {
         patcher.patch(
@@ -48,8 +50,8 @@ object USRBG : AbstractDatabase() {
 				id.toString() + regex,
 				Pattern.DOTALL
 			).matcher(data)
-			matcher.find()
-			usrbg.log.debug(matcher.find().toString() + " matcherfind") 
+			matcher.find(testing)
+			usrbg.log.debug(testing.toString() + " matcherfind") 
                     if (matcher.find()) {
                         matcher.group(1)?.let { it1 ->
                             mapCache[id] = it1
