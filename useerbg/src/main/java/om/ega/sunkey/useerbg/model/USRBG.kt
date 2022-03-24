@@ -19,7 +19,7 @@ object USRBG : AbstractDatabase() {
     override val mapCache: MutableMap<Long, String> = HashMap()
     override val name: String = "USRBG"
     
-    val testing = ""
+    val testing: String = ""
 
     override fun runPatches(patcher: PatcherAPI, settings: SettingsAPI) {
         patcher.patch(
