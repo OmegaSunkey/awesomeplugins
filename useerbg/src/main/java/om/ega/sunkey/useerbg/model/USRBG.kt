@@ -49,7 +49,7 @@ object USRBG : AbstractDatabase() {
 				Pattern.DOTALL
 			).matcher(data)
                     if (matcher.find()) {
-                        matcher.group()?.let { it1 ->
+                        matcher.group(1)?.let { it1 ->
                             mapCache[id] = it1
                             it.result = it1
 			    usrbg.log.debug(matcher.group(0).toString() + " matchergroup0")
@@ -61,8 +61,7 @@ object USRBG : AbstractDatabase() {
                         }
                     } else {
 			    it.result = "https://media.discordapp.net/attachments/929565544334647356/956283792333615175/Screenshot_20220322-224827638.jpg"
-			    usrbg.log.debug(matcher.group(0).toString() + " matchergroup0 else")
-			    usrbg.log.debug(matcher.group(1).toString() + " matchergroup1 else")
+			    usrbg.log.debug(matcher.group(1).toString() + " matchergroup0 else")
 		    }
 	        }
             }
