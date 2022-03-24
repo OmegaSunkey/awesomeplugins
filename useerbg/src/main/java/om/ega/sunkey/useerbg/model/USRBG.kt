@@ -45,13 +45,13 @@ object USRBG : AbstractDatabase() {
 		usrbg.log.debug(id.toString() + " id")
 
                 if (mapCache.containsKey(id)) it.result = mapCache[id] else {
-			usrbg.log.debug("this block is executing") 
+			usrbg.log.debug("elseblock before mapcache") 
 			val matcher = Pattern.compile(
 				id.toString() + regex,
 				Pattern.DOTALL
 			).matcher(data)
 			matcher.find(testing)
-			usrbg.log.debug(testing.toString() + " matcherfind") 
+			usrbg.log.debug(testing.toString() + " matcherfind")
                     if (matcher.find()) {
                         matcher.group(1)?.let { it1 ->
                             mapCache[id] = it1
