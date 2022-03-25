@@ -30,7 +30,7 @@ abstract class AbstractDatabase() {
                 data = loadFromCache(it)
                 usrbg.log.debug("Loaded $name database.")
 
-                if (ifRecache(it.lastModified(), settings) || data.isEmpty() || data != null) {
+                if (ifRecache(it.lastModified(), settings) || data.isEmpty() || data == null) {
                     downloadDB(it)
                 }
             }
