@@ -45,9 +45,7 @@ object USRBG : AbstractDatabase() {
 				id.toString() + regex,
 				Pattern.DOTALL
 			).matcher(data)
-			matcher.find()
 			usrbg.log.debug(matcher.toString() + " matcher val")
-			usrbg.log.debug(matcher.find().toString() + " matcherfind")
                     if (matcher.find()) {
                         matcher.group(1)?.let { it1 ->
                             mapCache[id] = it1
