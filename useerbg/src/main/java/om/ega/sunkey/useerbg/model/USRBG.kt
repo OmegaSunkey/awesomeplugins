@@ -42,8 +42,7 @@ object USRBG : AbstractDatabase() {
                 if (mapCache.containsKey(id)) it.result = mapCache[id] else {
 			usrbg.log.debug("elseblock before mapcache") 
 			val matcher = Pattern.compile(
-				id.toString() + regex,
-				Pattern.DOTALL
+				id.toString() + regex
 			).matcher(data)
 			matcher.find()
 			usrbg.log.debug(matcher.toString() + " matcher val")
@@ -60,7 +59,6 @@ object USRBG : AbstractDatabase() {
 			    usrbg.log.debug(it.args[1].toString() + "itargs0")
                         }
                     } else {
-			    it.result = "https://media.discordapp.net/attachments/929565544334647356/956283792333615175/Screenshot_20220322-224827638.jpg"
 			    usrbg.log.debug("you didnt find you dumb")
 		    }
 	        }
