@@ -11,7 +11,7 @@ import com.discord.widgets.user.profile.UserProfileHeaderViewModel
 import java.util.regex.Pattern
 
 object USRBG : AbstractDatabase() {
-    override val regex: String = " \".*?\"(http?s:\\/\\/[\\w.\\/-]*)\""
+    override val regex: String = " .*?\"(http?s:\\/\\/[\\w.\\/-]*)\""
     override val url: String = "https://raw.githubusercontent.com/Discord-Custom-Covers/usrbg/master/dist/usrbg.json"
 
     override var data: String = ""
