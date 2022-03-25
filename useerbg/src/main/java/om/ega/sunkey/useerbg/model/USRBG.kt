@@ -11,7 +11,7 @@ import com.discord.widgets.user.profile.UserProfileHeaderViewModel
 import java.util.regex.Pattern
 
 object USRBG : AbstractDatabase() {
-    override val regex: String = ".*?\"(http?s:\\/\\/[\\w.\\/-]*)\""
+    override val regex: String = ".*?\"(https:\\/\\/[\\w.\\/-]*)\""
     override val url: String = "https://raw.githubusercontent.com/Discord-Custom-Covers/usrbg/master/dist/usrbg.json"
 
     override var data: String = ""
@@ -42,7 +42,8 @@ object USRBG : AbstractDatabase() {
                 if (mapCache.containsKey(id)) it.result = mapCache[id] else {
 			usrbg.log.debug("elseblock before mapcache") 
 			val matcher = Pattern.compile(
-				id.toString() + regex
+				id.toString() + regex,
+				Pattern.DOTALL
 			).matcher(data)
 			matcher.find()
 			usrbg.log.debug(matcher.toString() + " matcher val")
