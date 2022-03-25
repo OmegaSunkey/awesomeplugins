@@ -56,14 +56,6 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
                 true
             )
         )
-        addView(
-            createCheckedSetting(
-                view.context,
-                "Use downscaleToFrame and partial cache (experimental)",
-                "downscaleToFrame",
-                false
-            )
-        )
         addView(refreshCache)
     }
 

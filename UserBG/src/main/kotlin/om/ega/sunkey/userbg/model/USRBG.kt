@@ -1,17 +1,19 @@
-package om.ega.sunkey.useerbg.model
+package om.ega.sunkey.userbg.model
 
 import com.aliucord.PluginManager
 import com.aliucord.Utils
 import com.aliucord.api.PatcherAPI
-import om.ega.sunkey.useerbg.usrbg
+import om.ega.sunkey.userbg.UserBG
 import com.aliucord.api.SettingsAPI
 import com.aliucord.patcher.Hook
 import com.discord.utilities.icon.IconUtils
 import com.discord.widgets.user.profile.UserProfileHeaderViewModel
 import java.util.regex.Pattern
 
+//i've read this code so many times i will comment everything
+
 object USRBG : AbstractDatabase() {
-    override val regex: String = ".*?\"(https:\\/\\/[\\w.\\/-]*)\""
+    override val regex: String = ".*?\"(http?s:\\/\\/[\\w.\\/-]*)\""
     override val url: String = "https://raw.githubusercontent.com/Discord-Custom-Covers/usrbg/master/dist/usrbg.json"
 
     override var data: String = ""
@@ -26,7 +28,7 @@ object USRBG : AbstractDatabase() {
                 Long::class.javaPrimitiveType,
                 String::class.java,
                 Integer::class.java,
-                Boolean::class.javaPrimitiveType
+                Boolean::class.javaPrimitiveType //gets all classes to patch including url and id 
             ), Hook {
 		
                 if (it.result != null && settings.getBool(
@@ -36,35 +38,22 @@ object USRBG : AbstractDatabase() {
                 ) return@Hook   // could not get USRBG database in time or wasn't available
 
                 val id = it.args[0] as Long
-		usrbg.log.debug(it.args[0].toString() + " it args 0") 
-		usrbg.log.debug(id.toString() + " id")
-
                 if (mapCache.containsKey(id)) it.result = mapCache[id] else {
-			usrbg.log.debug("elseblock before mapcache") 
-			val matcher = Pattern.compile(
-				id.toString() + regex,
-				Pattern.DOTALL
-			).matcher(data)
-			usrbg.log.debug(matcher.toString() + " matcher val")
+                    val matcher = Pattern.compile(
+                        id.toString() + regex,
+                        Pattern.DOTALL
+                    ).matcher(data) //matches banner url with id
                     if (matcher.find()) {
                         matcher.group(1)?.let { it1 ->
                             mapCache[id] = it1
-                            it.result = it1
-			    usrbg.log.debug(matcher.group(1).toString() + " matchergroup1")
-			    
-			    usrbg.log.debug(it1.toString() + "it1")
-			    usrbg.log.debug(it.result.toString() + "itresult")
-			    usrbg.log.debug(id.toString() + "id")                                
-			    usrbg.log.debug(it.args[1].toString() + "itargs0")
+                            it.result = it1 //inserts the result that is in the group1 on regex 
                         }
-                    } else {
-			    usrbg.log.debug("you didnt find you dumb")
-		    }
-	        }
+                    }
+                } 
             }
         )
 
-        if (PluginManager.isPluginEnabled("ViewProfileImages")) { // this code gets banner and makes it viewable ven
+        if (PluginManager.isPluginEnabled("ViewProfileImages")) { // this code gets banner and makes it viewable via viewprofileimages ven
             patcher.patch(
 		 UserProfileHeaderViewModel.ViewState.Loaded::class.java.getDeclaredMethod(
 		    "getBanner"
@@ -75,10 +64,10 @@ object USRBG : AbstractDatabase() {
                             "nitroBanner",
                             true
                         )
-                    ) it.result = "https://usrbg.cumcord.com/"
+                    ) it.result = "https://usrbg.cumcord.com/" //dont ask
 	 })
      }
  }
     private val bannerMatch =
-        Pattern.compile("^https://cdn.discordapp.com/banners/\\d+/[a-z0-9_]+\\.\\w{3,5}\\?size=\\d+$")
+        Pattern.compile("^https://cdn.discordapp.com/banners/\\d+/[a-z0-9_]+\\.\\w{3,5}\\?size=\\d+$") //this compiles og banner 
 }
