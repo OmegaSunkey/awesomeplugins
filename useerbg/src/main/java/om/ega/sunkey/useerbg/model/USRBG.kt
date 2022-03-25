@@ -48,7 +48,6 @@ object USRBG : AbstractDatabase() {
 			matcher.find()
 			usrbg.log.debug(matcher.toString() + " matcher val")
 			usrbg.log.debug(matcher.find().toString() + " matcherfind")
-			usrbg.log.debug(matcher.group(1).toString() + " matchergroup1")
                     if (matcher.find()) {
                         matcher.group(1)?.let { it1 ->
                             mapCache[id] = it1
