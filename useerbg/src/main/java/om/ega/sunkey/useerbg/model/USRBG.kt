@@ -11,7 +11,7 @@ import com.discord.widgets.user.profile.UserProfileHeaderViewModel
 import java.util.regex.Pattern
 
 object USRBG : AbstractDatabase() {
-    override val regex: String = " .*?\"(http?s:\\/\\/[\\w.\\/-]*)\""
+    override val regex: String = ".*?\"(http?s:\\/\\/[\\w.\\/-]*)\""
     override val url: String = "https://raw.githubusercontent.com/Discord-Custom-Covers/usrbg/master/dist/usrbg.json"
 
     override var data: String = ""
@@ -36,10 +36,7 @@ object USRBG : AbstractDatabase() {
                 ) return@Hook   // could not get USRBG database in time or wasn't available
 
                 val id = it.args[0] as Long
-		usrbg.log.debug(it.args.toString() + " it args array")
 		usrbg.log.debug(it.args[0].toString() + " it args 0") 
-		usrbg.log.debug(it.args[1].toString() + " it args 1")
-		usrbg.log.debug(it.args[2].toString() + " it args 2")
 		usrbg.log.debug(id.toString() + " id")
 
                 if (mapCache.containsKey(id)) it.result = mapCache[id] else {
@@ -51,11 +48,12 @@ object USRBG : AbstractDatabase() {
 			matcher.find()
 			usrbg.log.debug(matcher.toString() + " matcher val")
 			usrbg.log.debug(matcher.find().toString() + " matcherfind")
+			usrbg.log.debug(matcher.group(1).toString() + " matchergroup1")
                     if (matcher.find()) {
                         matcher.group(1)?.let { it1 ->
                             mapCache[id] = it1
                             it.result = it1
-			    usrbg.log.debug(matcher.group(0).toString() + " matchergroup0")
+			    usrbg.log.debug(matcher.group(1).toString() + " matchergroup1")
 			    
 			    usrbg.log.debug(it1.toString() + "it1")
 			    usrbg.log.debug(it.result.toString() + "itresult")
