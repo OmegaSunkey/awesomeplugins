@@ -12,6 +12,9 @@ import com.aliucord.patcher.*
 
 @AliucordPlugin(requiresRestart = false)
 class StartupSound2 : Plugin() {
+	init {
+		settingsTab = SettingsTab(PluginSettings::class.java).withArgs(settings)
+	}
     override fun start(context: Context) {
         startupdiscord()
     }
