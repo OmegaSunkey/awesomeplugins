@@ -10,6 +10,7 @@ import android.text.InputType
 import android.view.View
 import com.discord.app.AppFragment
 import com.discord.utilities.view.text.TextWatcher
+import om.ega.sunkey.StartupSound2.StartupSound2
 
 class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 	override fun onViewBound(view: View) {
