@@ -7,6 +7,6 @@ rootProject.name = "awesomeplugins"
 include(
     "StartupSound",
     "UserBG",
-    "useerbg"
+    "StartupSound2"
 )
 

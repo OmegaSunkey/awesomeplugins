@@ -1,0 +1,36 @@
+package om.ega.sunkey
+
+import android.content.Context
+import com.aliucord.Utils.createCheckedSetting
+import com.aliucord.api.SettingsAPI
+import com.aliucord.fragments.SettingsPage
+import com.aliucord.views.TextInput
+import android.text.Editable
+import android.text.InputType
+import android.view.View
+import com.discord.app.AppFragment
+import com.discord.utilities.view.text.TextWatcher
+
+class PluginSettings (settings: SettingsAPI) : SettingsPage() {
+	override fun onViewBound(view: View) {
+		super.onViewBound(view)
+		setActionBarTitle("StartupSound")
+                val texto = TextInput(view.context)
+		texto.editText.setText(
+			settings.getLong("sonido", StartupSound2.sonido)
+		)
+		texto.editText.inputType = InputType.TYPE_CLASS_STRING
+		texto.editText.addTextChangedListener(object : TextWatcher() {
+			override fun afterTextChanged(editable: Editable) {
+				try {
+					if (java.lang.String.valueOf(editable) != null) settings.setString("sonido",
+					java.lang.String.valueOf(editable)
+				)
+
+				} catch (e: Exception) {
+					settings.setString("sonido", StartupSound2.sonido)
+				}
+			}
+		})
+	}
+}
