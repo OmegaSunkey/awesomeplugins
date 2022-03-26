@@ -7,6 +7,7 @@ import com.aliucord.annotations.AliucordPlugin
 import com.aliucord.entities.Plugin
 import om.ega.sunkey.useerbg.model.AbstractDatabase
 import om.ega.sunkey.useerbg.model.USRBG
+import om.ega.sunkey.useerbg.model.APFP
 import kotlin.Throws
 
 @AliucordPlugin
