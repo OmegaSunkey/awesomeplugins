@@ -1,4 +1,4 @@
-package om.ega.sunkey
+package om.ega.sunkey.StartupSound2
 
 import android.content.Context
 import android.media.AudioAttributes
@@ -17,7 +17,7 @@ class StartupSound2 : Plugin() {
     }
 
 public fun startupdiscord() {
-	sonido = "https://github.com/OmegaSunkey/awesomeplugins/blob/main/Discord%20Startup%20Sound%20HQ.mp3?raw=true"
+	val sonido = "https://github.com/OmegaSunkey/awesomeplugins/blob/main/Discord%20Startup%20Sound%20HQ.mp3?raw=true"
         try {
             Utils.threadPool.execute {
                 MediaPlayer().apply {

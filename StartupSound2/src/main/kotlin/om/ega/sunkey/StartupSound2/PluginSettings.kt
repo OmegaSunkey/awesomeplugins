@@ -1,4 +1,4 @@
-package om.ega.sunkey
+package om.ega.sunkey.StartupSound2
 
 import android.content.Context
 import com.aliucord.Utils.createCheckedSetting
