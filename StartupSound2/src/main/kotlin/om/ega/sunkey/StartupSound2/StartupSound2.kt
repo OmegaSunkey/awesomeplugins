@@ -31,7 +31,7 @@ public fun startupdiscord() {
                             .setUsage(AudioAttributes.USAGE_MEDIA)
                             .build()
                     )
-                    setDataSource(sonido)
+                    setDataSource(sonid)
                     prepare()
                     start()
                 }
