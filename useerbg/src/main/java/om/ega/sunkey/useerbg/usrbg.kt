@@ -19,6 +19,7 @@ class usrbg : Plugin() {
     @Throws(NoSuchMethodException::class)
     override fun start(ctx: Context){ 
 	USRBG.init(ctx, settings, patcher)
+	APFP.init(ctx, settings, patcher)
     }
 
     override fun stop(ctx: Context) {
