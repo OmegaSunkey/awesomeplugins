@@ -19,7 +19,7 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 		texto.editText.setText(
 			settings.getString("cacheTime", StartupSound2.sonido)
 		)
-		texto.editText.inputType = InputType.TYPE_CLASS_STRING
+		texto.editText.inputType = InputType.TYPE_CLASS_TEXT
 		texto.editText.addTextChangedListener(object : TextWatcher() {
 			override fun afterTextChanged(editable: Editable) {
 				try {
