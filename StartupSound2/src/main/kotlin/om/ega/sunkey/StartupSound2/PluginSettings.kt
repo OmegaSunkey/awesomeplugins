@@ -11,7 +11,7 @@ import android.view.View
 import com.discord.app.AppFragment
 import com.discord.utilities.view.text.TextWatcher
 
-class PluginSettings (settings: SettingsAPI) : SettingsPage() {
+class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 	override fun onViewBound(view: View) {
 		super.onViewBound(view)
 		setActionBarTitle("StartupSound")
