@@ -34,5 +34,6 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 				}
 			}
 		})
+		addView(texto)
 	}
 }
