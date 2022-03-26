@@ -6,7 +6,6 @@ import android.media.MediaPlayer
 import com.aliucord.Utils
 import com.aliucord.annotations.AliucordPlugin
 import com.aliucord.entities.Plugin
-import com.aliucord.SettingsAPI
 import com.aliucord.patcher.*
 
 @AliucordPlugin(requiresRestart = false)
