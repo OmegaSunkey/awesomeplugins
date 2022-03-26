@@ -28,7 +28,7 @@ class usrbg : Plugin() {
 
     companion object {
         lateinit var USRBG: USRBG
-
+	lateinit var APFP: APFP
         val log: Logger = Logger("UsrBG")
         const val REFRESH_CACHE_TIME = (6 * 60).toLong()
     }
