@@ -25,7 +25,7 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 		texto.editText.addTextChangedListener(object : TextWatcher() {
 			override fun afterTextChanged(editable: Editable) {
 				try {
-					if (java.lang.String.valueOf(editable) != null) settings.setString("sonido",
+				        settings.setString("sonido",
 					java.lang.String.valueOf(editable)
 				)
 
