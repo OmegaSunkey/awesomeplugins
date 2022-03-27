@@ -59,7 +59,7 @@ abstract class AbstractDatabase() {
         return System.currentTimeMillis() - lastModified > settings.getLong(
             "cacheTime",
             UserBG.REFRESH_CACHE_TIME
-        ) * 60 * 1000 // 6 hours
+        ) * 60 * 1000 // 6 hours if 360 (minutes) is inserted
     }
 
     abstract fun runPatches(patcher: PatcherAPI, settings: SettingsAPI)

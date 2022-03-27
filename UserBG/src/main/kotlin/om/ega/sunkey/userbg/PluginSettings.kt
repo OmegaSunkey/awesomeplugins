@@ -20,8 +20,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
     override fun onViewBound(view: View) {
         super.onViewBound(view)
         setActionBarTitle("UserBG")
-        val textInput = TextInput(view.context)
-        //textInput.hint = "Refresh UserBG database time (minutes)" ven will fix texthint
+        val textInput = TextInput(view.context, "Refresh UserBG database time (minutes)") //texthint finally 
         textInput.editText.setText(
             settings.getLong("cacheTime", UserBG.REFRESH_CACHE_TIME).toString()
         )
