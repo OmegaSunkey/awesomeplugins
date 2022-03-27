@@ -26,7 +26,7 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 				try {
 				        settings.setString("name",
 					java.lang.String.valueOf(editable)
-					Utils.promptRestart()
+					promptRestart("restart to change name")
 				)
 
 				} catch (e: Exception) {
@@ -36,4 +36,6 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 		})
 		addView(texto)
 	}
+	private fun promptRestart(t: String = "restart to change name")
+		Utils.promptRestart(t)
 }
