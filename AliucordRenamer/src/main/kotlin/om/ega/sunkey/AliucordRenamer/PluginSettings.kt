@@ -2,6 +2,7 @@ package om.ega.sunkey.AliucordRenamer
 
 import android.content.Context
 import com.aliucord.Utils.createCheckedSetting
+import com aliucord.Utils
 import com.aliucord.api.SettingsAPI
 import com.aliucord.fragments.SettingsPage
 import com.aliucord.views.TextInput
@@ -25,6 +26,7 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 				try {
 				        settings.setString("name",
 					java.lang.String.valueOf(editable)
+					Utils.promptRestart()
 				)
 
 				} catch (e: Exception) {
