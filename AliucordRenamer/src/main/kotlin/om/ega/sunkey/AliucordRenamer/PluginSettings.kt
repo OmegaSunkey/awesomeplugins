@@ -28,7 +28,7 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 				)
 
 				} catch (e: Exception) {
-					settings.setString("name", sonido)
+					settings.setString("name", "set a name in settings")
 				}
 			}
 		})
