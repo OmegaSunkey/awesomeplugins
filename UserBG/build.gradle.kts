@@ -1,4 +1,4 @@
-version = "1.0.2"
+version = "1.0.3"
 description = "UserBG"
 
 aliucord {
@@ -9,4 +9,5 @@ aliucord {
         * most of this plugin was made by halalking, i just fixed some things.
     """.trimIndent()
     )
+    author("HalalKing", 0)
 }
