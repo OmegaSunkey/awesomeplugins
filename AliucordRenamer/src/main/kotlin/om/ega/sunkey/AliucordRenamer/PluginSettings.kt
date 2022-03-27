@@ -21,12 +21,13 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 			settings.getString("name", "set a name in settings")
 		)
 		texto.editText.inputType = InputType.TYPE_CLASS_TEXT
+		texto.editText.setHint("Set name to Aliucord, restart to apply")
 		texto.editText.addTextChangedListener(object : TextWatcher() {
 			override fun afterTextChanged(editable: Editable) {
 				try {
 				        settings.setString("name",
 					java.lang.String.valueOf(editable)
-					Utils.promptRestart("restart to change name")
+					//Utils.promptRestart("restart to change name")
 				)
 
 				} catch (e: Exception) {
@@ -36,7 +37,7 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 		})
 		addView(texto)
 	}
-	fun Restart(t: String = "restart to change name") {
+	/*fun Restart(t: String = "restart to change name") {
 		Utils.promptRestart(t)
-	}
+	} */ 
 }
