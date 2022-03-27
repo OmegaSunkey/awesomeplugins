@@ -36,6 +36,7 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 		})
 		addView(texto)
 	}
-	private fun promptRestart(t: String = "restart to change name")
+	private fun promptRestart(t: String = "restart to change name") {
 		Utils.promptRestart(t)
+	}
 }
