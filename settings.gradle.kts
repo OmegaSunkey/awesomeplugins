@@ -6,6 +6,7 @@ rootProject.name = "awesomeplugins"
 // Plugins are included like this
 include(
     "StartupSound",
-    "UserBG"
+    "UserBG",
+    "AliucordRenamer"
 )
 
