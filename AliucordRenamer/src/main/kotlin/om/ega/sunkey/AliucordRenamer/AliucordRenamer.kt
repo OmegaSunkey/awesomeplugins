@@ -29,9 +29,11 @@ class AliucordRenamer : Plugin() {
     @Suppress("SetTextI18n", "Deprecation") // cope
     override fun start(ctx: Context) {
 	patcher.after<WidgetSettings>("onViewBound", View::class.java) {
+		val context = requireContext()
+		val root = it.args[0] as CoordinatorLayout
+		val view = (root.getChildAt(1) as NestedScrollView).getChildAt(0) as LinearLayoutCompat
 
             val version = view.findViewById<TextView>(Utils.getResId("app_info_header", "id"))
-            val pInfo = context.packageManager.getPackageInfo(context.packageName, 0)
             version.text = settings.getString("name", "set a name in settings")
         }
     }
