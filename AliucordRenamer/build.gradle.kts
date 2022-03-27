@@ -10,7 +10,7 @@ aliucord {
     //changelogMedia.set("https://cdn.discordapp.com/attachments/929565544334647356/957419019500146708/Screenshot_20220326-182112113.jpg")
 
     // Add additional authors to this plugin
-    // author("Name", 0)
+    author("Iryis", 1)
     // author("Name", 0)
 
     // Excludes this plugin from the updater, meaning it won't show up for users.
