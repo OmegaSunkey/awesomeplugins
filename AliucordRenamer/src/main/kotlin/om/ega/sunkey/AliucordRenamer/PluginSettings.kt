@@ -17,11 +17,11 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 		super.onViewBound(view)
 		setActionBarTitle("AliucordRenamer")
                 val texto = TextInput(view.context)
+		texto.editText.setHint("Set name to Aliucord, restart to apply")
 		texto.editText.setText(
 			settings.getString("name", "set a name in settings")
 		)
 		texto.editText.inputType = InputType.TYPE_CLASS_TEXT
-		texto.editText.setHint("Set name to Aliucord, restart to apply")
 		texto.editText.addTextChangedListener(object : TextWatcher() {
 			override fun afterTextChanged(editable: Editable) {
 				try {
