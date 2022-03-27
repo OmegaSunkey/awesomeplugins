@@ -26,7 +26,7 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 				try {
 				        settings.setString("name",
 					java.lang.String.valueOf(editable)
-					Restart("restart to change name")
+					Utils.promptRestart("restart to change name")
 				)
 
 				} catch (e: Exception) {
