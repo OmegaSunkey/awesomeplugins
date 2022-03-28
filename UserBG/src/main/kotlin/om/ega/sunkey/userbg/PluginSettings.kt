@@ -21,6 +21,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
     override fun onViewBound(view: View) {
         super.onViewBound(view)
         setActionBarTitle("UserBG")
+	val ctx = requireContext()
         val textInput = TextInput(view.context, "Refresh UserBG database time (minutes)") //texthint finally 
         textInput.editText.setText(
             settings.getLong("cacheTime", UserBG.REFRESH_CACHE_TIME).toString()
@@ -59,7 +60,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
         addView(refreshCache)
 	}
 
-	val server = TextView(view.context).apply {
+	val server = TextView(ctx).apply {
 		linksClickable = true
 		text = "Server en español: https://discord.gg/NfkPvxvmuz"
 	}
