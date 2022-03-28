@@ -7,6 +7,7 @@ import com.aliucord.views.TextInput
 import android.text.Editable
 import android.text.InputType
 import android.view.View
+import android.widget.TextView
 import com.discord.app.AppFragment
 import com.discord.views.CheckedSetting
 import com.aliucord.PluginManager
@@ -56,8 +57,13 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
             )
         )
         addView(refreshCache)
-    }
+	}
 
+	val server = TextView(view.context).apply {
+		linksClickable = true
+		text = "Server en español: https://discord.gg/NfkPvxvmuz"
+	}
+	addView(server)
     private fun createCheckedSetting(
         ctx: Context,
         title: String,
