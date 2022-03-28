@@ -57,14 +57,18 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
                 true
             )
         )
-        addView(refreshCache)
-	}
+        addView(refreshCache) 
 
 	val server = TextView(view?.context).apply {
 		linksClickable = true
-		text = "Server en español: https://discord.gg/NfkPvxvmuz"
+		text = "Server de soporte en español: https://discord.gg/NfkPvxvmuz"
 	}
+
 	addView(server)
+
+	}
+
+
     private fun createCheckedSetting(
         ctx: Context,
         title: String,
