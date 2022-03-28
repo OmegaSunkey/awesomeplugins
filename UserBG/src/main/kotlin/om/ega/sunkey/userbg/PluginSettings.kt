@@ -60,7 +60,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
         addView(refreshCache)
 	}
 
-	val server = TextView(ctx).apply {
+	val server = TextView(view?.context).apply {
 		linksClickable = true
 		text = "Server en español: https://discord.gg/NfkPvxvmuz"
 	}
