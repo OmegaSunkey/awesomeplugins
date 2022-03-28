@@ -16,6 +16,8 @@ Para usar banners primero debes leer la guía de arriba y usar el traductor que 
 El tiempo que necesitas esperar para descargar la base de datos (o como está en el plugin, "Redownload Databases") es de 2 a 3 minutos.
 Por favor si tienes un problema con insertar banners o de como insertarlos no lo preguntes en el servidor de Aliucord.
 
+[Soporte de Aliucord en español](https://discord.gg/NfkPvxvmuz)
+
 Este plugin fue originalmente hecho por HalalKing. Yo simplemente arreglé algunas cosas. Si halal quiere que fusione este plugin con su plugin o que lo borre, lo haré y avisaré.
 Lo que quiero hacer: añadir el soporte para APFP, esto no es posible aun porque no hay invite al server xddddd.
 
