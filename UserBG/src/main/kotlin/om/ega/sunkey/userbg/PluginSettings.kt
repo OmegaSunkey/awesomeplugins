@@ -14,6 +14,7 @@ import com.aliucord.PluginManager
 import com.aliucord.Utils
 import com.aliucord.fragments.SettingsPage
 import com.aliucord.views.Button
+import com.aliucord.views.Divider
 import com.discord.utilities.view.text.TextWatcher
 import java.lang.Exception
 
@@ -63,7 +64,11 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
 		linksClickable = true
 		text = "Server de soporte en español: https://discord.gg/NfkPvxvmuz"
 	}
+	val divider = Divider(view?.context).apply {
+		setPadding(p, p, p, p)
+	}
 
+	addView(divider)
 	addView(server)
 
 	}
