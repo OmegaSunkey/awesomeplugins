@@ -7,11 +7,13 @@ import com.aliucord.views.TextInput
 import android.text.Editable
 import android.text.InputType
 import android.view.View
+import android.text.util.Linkify
 import android.widget.TextView
 import com.discord.app.AppFragment
 import com.discord.views.CheckedSetting
 import com.aliucord.PluginManager
 import com.aliucord.Utils
+import com.aliucord.utils.DimenUtils
 import com.aliucord.fragments.SettingsPage
 import com.aliucord.views.Button
 import com.aliucord.views.Divider
@@ -22,7 +24,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
     override fun onViewBound(view: View) {
         super.onViewBound(view)
         setActionBarTitle("UserBG")
-	val ctx = requireContext()
+	val p = DimenUtils.defaultPadding
         val textInput = TextInput(view.context, "Refresh UserBG database time (minutes)") //texthint finally 
         textInput.editText.setText(
             settings.getLong("cacheTime", UserBG.REFRESH_CACHE_TIME).toString()
@@ -64,11 +66,13 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
 		linksClickable = true
 		text = "Server de soporte en español: https://discord.gg/NfkPvxvmuz"
 	}
+	Linkify.addLinks(server, Linkify.WEB_URLS)
+
 	val divider = Divider(view?.context).apply {
 		setPadding(p, p, p, p)
 	}
 
-	addView(divider)
+	addView(divider) //thanks scruz 
 	addView(server)
 
 	}
