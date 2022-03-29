@@ -67,7 +67,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
 	val server = TextView(view?.context).apply {
 		linksClickable = true
 		text = "Server de soporte en español: https://discord.gg/NfkPvxvmuz"
-		setTextColor(ColorCompat.getThemedColor(ctx, R.b.colorOnPrimary))
+		setTextColor(ColorCompat.getThemedColor(view?.context, R.b.colorOnPrimary))
 	}
 	Linkify.addLinks(server, Linkify.WEB_URLS)
 
