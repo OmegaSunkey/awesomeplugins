@@ -1,10 +1,11 @@
-version = "1.0.0" // Plugin version. Increment this to trigger the updater
+version = "1.0.1" // Plugin version. Increment this to trigger the updater
 description = "stupit plugin" // Plugin description that will be shown to user
 
 aliucord {
     // Changelog of your plugin
     changelog.set("""
-        # hello
+        # 1.0.1
+	* Set text hint / texto que te dice que poner en el cuadro de texto añadido wwww
     """.trimIndent())
     // Image or Gif that will be shown at the top of your changelog page
     //changelogMedia.set("https://cdn.discordapp.com/attachments/929565544334647356/957419019500146708/Screenshot_20220326-182112113.jpg")

@@ -12,13 +12,14 @@ TODO: fix apfp support. I wont do this rn because apfp is still in dev and the i
 
 # ESPAÑOL
 Este plugin te deja usar banners sin nitro.
-Para usar banners primero debes leer la guía de arriba y usar el traductor que tiene la guía.
+Para usar banners primero debes entrar al servidor de BlackBox (la invitación está en el enlace de rentry.co), e ir al canal de #background-requests, en este canal debes subir una imagen o gif (los videos no están soportados), luego debes esperar a que tu banner sea aprobado, esto se ve en el canal de #userbg-log, una vez sea aprobado debes descargar la base de datos con el boton de Redownload Databases. 
 El tiempo que necesitas esperar para descargar la base de datos (o como está en el plugin, "Redownload Databases") es de 2 a 3 minutos.
 Por favor si tienes un problema con insertar banners o de como insertarlos no lo preguntes en el servidor de Aliucord.
 
 [Soporte de Aliucord en español](https://discord.gg/NfkPvxvmuz)
 
 Este plugin fue originalmente hecho por HalalKing. Yo simplemente arreglé algunas cosas. Si halal quiere que fusione este plugin con su plugin o que lo borre, lo haré y avisaré.
-Lo que quiero hacer: añadir el soporte para APFP, esto no es posible aun porque no hay invite al server xddddd.
+
+PLANEADO: añadir el soporte para APFP, esto no es posible aun porque no hay invite al server xddddd.
 
 src: https://github.com/terabyte25/plugins

@@ -16,7 +16,7 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 	override fun onViewBound(view: View) {
 		super.onViewBound(view)
 		setActionBarTitle("StartupSound")
-                val texto = TextInput(view.context)
+                val texto = TextInput(view.context, "Añadir enlace / Set link")
 		texto.editText.setText(
 			settings.getString("sonido", sonido)
 		)

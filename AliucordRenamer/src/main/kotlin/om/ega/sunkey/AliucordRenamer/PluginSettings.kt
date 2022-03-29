@@ -16,7 +16,7 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 	override fun onViewBound(view: View) {
 		super.onViewBound(view)
 		setActionBarTitle("AliucordRenamer")
-                val texto = TextInput(view.context)
+                val texto = TextInput(view.context, "Set name to aliucord / Añade un nombre a aliucord")
 		texto.editText.setHint("Set name to Aliucord, restart to apply")
 		texto.editText.setText(
 			settings.getString("name", "set a name in settings")
