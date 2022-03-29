@@ -1,4 +1,4 @@
-version = "1.0.6"
+version = "1.0.7"
 description = "UserBG"
 
 aliucord {
@@ -13,6 +13,8 @@ aliucord {
 	* added spanish support server / server de soporte en español añadido 
 	# 1.0.6
 	* fixed links being not clickable / arreglé los links soy tonto waaa 
+	# 1.0.7
+	* fixed text color / le quité el color feo al texto 
     """.trimIndent()
     )
     author("HalalKing", 0)

@@ -18,6 +18,8 @@ import com.aliucord.fragments.SettingsPage
 import com.aliucord.views.Button
 import com.aliucord.views.Divider
 import com.discord.utilities.view.text.TextWatcher
+import com.discord.utilities.color.ColorCompat
+import com.lytefast.flexinput.R
 import java.lang.Exception
 
 class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
@@ -25,7 +27,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
         super.onViewBound(view)
         setActionBarTitle("UserBG")
 	val p = DimenUtils.defaultPadding
-        val textInput = TextInput(view.context, "Refresh UserBG database time (minutes)") //texthint finally 
+        val textInput = TextInput(view.context, "Refresh UserBG db time (min) / Actualizar la base de datos de UserBG (min)") //texthint finally 
         textInput.editText.setText(
             settings.getLong("cacheTime", UserBG.REFRESH_CACHE_TIME).toString()
         )
@@ -65,6 +67,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
 	val server = TextView(view?.context).apply {
 		linksClickable = true
 		text = "Server de soporte en español: https://discord.gg/NfkPvxvmuz"
+		setTextColor(ColorCompat.getThemedColor(ctx, R.b.colorOnPrimary))
 	}
 	Linkify.addLinks(server, Linkify.WEB_URLS)
 
