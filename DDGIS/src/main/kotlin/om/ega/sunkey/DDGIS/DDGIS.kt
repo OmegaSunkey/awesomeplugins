@@ -6,12 +6,13 @@ import com.aliucord.api.CommandsAPI
 import com.aliucord.entities.CommandContext
 import com.aliucord.annotations.AliucordPlugin
 import com.aliucord.entities.Plugin
+import com.discord.api.commands.ApplicationCommandType
 import com.aliucord.patcher.*
 
 @AliucordPlugin(requiresRestart = false)
 class DDGIS : Plugin() {
     override fun start(context: Context) {
-	commands.registerCommand(DDGIS, Image Search, commandoptions) {
+	commands.registerCommand("DDGIS", "Image Search", commandoptions) {
 		CommandsAPI.CommandResult(ddg)
 	}
     }
