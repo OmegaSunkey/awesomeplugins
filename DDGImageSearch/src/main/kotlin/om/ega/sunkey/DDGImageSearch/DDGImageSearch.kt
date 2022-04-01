@@ -1,4 +1,4 @@
-package om.ega.sunkey.DDGIS
+package om.ega.sunkey.DDGImageSearch
 
 import android.content.Context
 import com.aliucord.Utils
@@ -10,9 +10,9 @@ import com.discord.api.commands.ApplicationCommandType
 import com.aliucord.patcher.*
 
 @AliucordPlugin(requiresRestart = false)
-class DDGIS : Plugin() {
+class DDGImageSearch : Plugin() {
     override fun start(context: Context) {
-	commands.registerCommand("DDGIS", "Image Search", commandoptions) {
+	commands.registerCommand("DDGImageSearch", "Image Search", commandoptions) {
 		CommandsAPI.CommandResult(ddg)
 	}
     }

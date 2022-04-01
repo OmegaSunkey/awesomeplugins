@@ -8,6 +8,6 @@ include(
     "StartupSound",
     "UserBG",
     "AliucordRenamer",
-    "DDGIS"
+    "DDGImageSearch"
 )
 
