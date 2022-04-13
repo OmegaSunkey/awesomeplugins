@@ -52,9 +52,9 @@ fun searchi(keyword: String) {
 
 	DDG.logger.debug("token!!!")
 
-	val headers = {
+/*	val headers = {
 		'authority' = 'duckduckgo.com',
-		'accept' = 'application/json, text/javascript, */*; q=0.01',
+		'accept' = 'application/json, text/javascript; q=0.01',
 		'sec-fetch-dest' = 'empty',
 		'x-requested-with' = 'XMLHttpRequest',
 		'user-agent' = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36',
@@ -62,7 +62,7 @@ fun searchi(keyword: String) {
 		'sec-fetch-mode' = 'cors',
 		'referer' = 'https://duckduckgo.com',
 		'accept-language' = 'en-US,en;q=0.9',
-	}
+	}*/
 	
 	val params = {
 		('l', 'us-en'),
