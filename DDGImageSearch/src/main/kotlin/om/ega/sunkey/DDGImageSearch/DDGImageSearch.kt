@@ -11,14 +11,19 @@ import com.aliucord.entities.Plugin
 import com.discord.api.commands.ApplicationCommandType
 import com.aliucord.patcher.*
 import java.util.regex.Pattern
+import java.util.concurrent.TimeUnit
 
 @AliucordPlugin(requiresRestart = false)
 class DDGImageSearch : Plugin() {
     override fun start(context: Context) {
 	commands.registerCommand("DDGImageSearch", "Image Search", commandoptions) {
-		CommandsAPI.CommandResult(ddg)
+		val keyw = it.getCommandArgs("DDGImageSearch")?.get("search").toString()
+		val ddg = searchi(keyw)
+		return@registerCommand CommandResult(ddg)
 	}
     }
+
+val logger = Logger("DDG")
 
 val commandoptions = listOf(
 	Utils.createCommandOption(
@@ -32,14 +37,12 @@ val commandoptions = listOf(
 	)
 )
 
-val ddg = "https://cdn.discordapp.com/attachments/781652296710881311/907492395623518248/Finance_Kabedon_-_Nijisanji_EN_Animation1080P_HD.mp4"
-
-fun search(keyword: String) {
+fun searchi(keyword: String) {
 	val url = "https://duckduckgo.com"
 	val params = {
 		"q" = keyword
 	}
-	logger.debug("hitting ddg for token")
+	DDG.logger.debug("hitting ddg for token")
 	//make a req for token then grab it for results
 	val res = Http.simplePost(url, params)
 	val urlPattern = Pattern.compile("r'vqd=([\\d-]+)\\&'")
@@ -47,7 +50,7 @@ fun search(keyword: String) {
 
 	if (searchObj == null) return
 
-	logger.debug("token!!!")
+	DDG.logger.debug("token!!!")
 
 	val headers = {
 		'authority' = 'duckduckgo.com',
@@ -64,7 +67,7 @@ fun search(keyword: String) {
 	val params = {
 		('l', 'us-en'),
 		('o', 'json'),
-		('q', keywords),
+		('q', keyword),
 		('vqd', searchObj.group(1)),
 		('f', ',,,'),
 		('p', '1'),
@@ -72,38 +75,41 @@ fun search(keyword: String) {
 	}
 	val requestUrl = url + "i.js"
 
-	logger.debug("Hitting url now", requestUrl)
+	DDG.logger.debug("Hitting url : %s", requestUrl)
 
 	while(True) {
 		while(True) {
 			try {
-				val res = Http.simpleGet(requestUrl)
-				val data = "" //i need to get res.text i think ill use gson
+				val res = Http.simpleJsonGet(requestUrl, params)
+				//val data = "" i need to get res.text i think ill use gson
+				DDG.logger.debug(res)
 				break
 			}
 			
 			catch(Throwable) {
-				logger.debug("Fail")
+				DDG.logger.debug("Fail")
+				TimeUnit.SECONDS.sleep(5)
 				continue //i need to add a timer
 			}
 		}
-		logger.debug("Success")
+		DDG.logger.debug("Success")
 		val result = data["results"]
 
-		if(/* next not in data */ false) {
+		/* if(/* next not in data */ false) {
 			logger.debug("No pages, finish")
 			//exit(0)
-		}
+		}*/
 
 		val requestUrl = url + data["next"]
 	}
+	return result
 }
 
-	fun printres(/*objs*/) {
+/*	fun printres(/*objs*/) {
 		for /* obj in objs */ {
 			/* wait why im porting print lmao */
 		}
-	}
+	}*/
 
 
     override fun stop(context: Context) {
