@@ -65,13 +65,13 @@ fun searchi(keyword: String) {
 	}*/
 	
 	val params = {
-		('l', 'us-en'),
-		('o', 'json'),
-		('q', keyword),
-		('vqd', searchObj.group(1)),
-		('f', ',,,'),
-		('p', '1'),
-		('v7exp', 'a'),
+		('l', 'us-en');
+		('o', 'json');
+		('q', keyword);
+		('vqd', searchObj.group(1));
+		('f', ',,,');
+		('p', '1');
+		('v7exp', 'a');
 	}
 	val requestUrl = url + "i.js"
 
@@ -93,14 +93,14 @@ fun searchi(keyword: String) {
 			}
 		}
 		DDG.logger.debug("Success")
-		val result = data["results"]
+		val result = res["results"]
 
 		/* if(/* next not in data */ false) {
 			logger.debug("No pages, finish")
 			//exit(0)
 		}*/
 
-		val requestUrl = url + data["next"]
+		val requestUrl = url + res["next"]
 	}
 	return result
 }
