@@ -14,10 +14,7 @@ class FanCopypasta : Plugin() {
     override fun start(context: Context) {
         commands.registerCommand("FanCopypasta", "Funny copypasta with your own word", commandoptions) {
 		val keyw = it.getCommandArgs("FanCopypasta")?.get("word").toString()
-		val copypasta = "if ${keyw} has a million fans im one of them
-if ${keyw} has 0 fans then I am no more 
-if ${keyw} has 1 fan that fan is me
-if the world is against ${keyw} then I'm against the world"
+		val copypasta = "if `${keyw}` has a million fans im one of them \nif $`{keyw}` has 0 fans then I am no more \nif `${keyw}` has 1 fan that fan is me \nif the world is against `${keyw}` then I'm against the world"
 		return@registerCommand CommandResult(copypasta)
 	}
    }
