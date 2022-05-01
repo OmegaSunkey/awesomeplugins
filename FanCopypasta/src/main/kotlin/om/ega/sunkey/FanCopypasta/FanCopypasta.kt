@@ -21,7 +21,7 @@ class FanCopypasta : Plugin() {
 		val LOG: Logger = Logger("FC")
 		//LOG.debug(keyw)
 		val copypasta = "if `${keyw}` has a million fans im one of them \nif `${keyw}` has 0 fans then I am no more \nif `${keyw}` has 1 fan that fan is me \nif the world is against `${keyw}` then I'm against the world"
-		return@registerCommand CommandResult("copypasta") //testing nlw lol 
+		return@registerCommand CommandResult(copypasta)
 	}
    }
 
