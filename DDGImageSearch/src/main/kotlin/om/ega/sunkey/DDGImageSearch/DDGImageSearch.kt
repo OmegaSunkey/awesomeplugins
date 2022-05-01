@@ -12,6 +12,8 @@ import com.discord.api.commands.ApplicationCommandType
 import com.aliucord.patcher.*
 import java.util.regex.Pattern
 import java.util.concurrent.TimeUnit
+import java.io.StringReader
+import com.google.gson.Gson
 
 @AliucordPlugin(requiresRestart = false)
 class DDGImageSearch : Plugin() {
@@ -64,7 +66,7 @@ fun searchi(keyword: String) {
 		'accept-language' = 'en-US,en;q=0.9',
 	}*/
 	
-	val params = {
+	/* val params = {
 		('l', 'us-en');
 		('o', 'json');
 		('q', keyword);
@@ -72,7 +74,7 @@ fun searchi(keyword: String) {
 		('f', ',,,');
 		('p', '1');
 		('v7exp', 'a');
-	}
+	} */
 	val requestUrl = url + "i.js"
 
 	DDG.logger.debug("Hitting url : %s", requestUrl)
@@ -80,8 +82,9 @@ fun searchi(keyword: String) {
 	while(True) {
 		while(True) {
 			try {
-				val res = Http.simpleJsonGet(requestUrl, params)
-				//val data = "" i need to get res.text i think ill use gson
+				val res = Http.simpleGet(requestUrl)
+				val data = JsonReader(StringReader(res))
+				val token = data.peek()
 				DDG.logger.debug(res)
 				break
 			}
@@ -93,14 +96,14 @@ fun searchi(keyword: String) {
 			}
 		}
 		DDG.logger.debug("Success")
-		val result = res["results"]
+		val result = token.equals(JsonToken.results)
 
 		/* if(/* next not in data */ false) {
 			logger.debug("No pages, finish")
 			//exit(0)
 		}*/
 
-		val requestUrl = url + res["next"]
+		val requestUrl = url + token.equals(JsonToken.next)
 	}
 	return result
 }
