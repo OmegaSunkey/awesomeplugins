@@ -8,6 +8,7 @@ include(
     "StartupSound",
     "UserBG",
     "AliucordRenamer",
-    "FanCopypasta"
+    "FanCopypasta",
+    "SafeBooru"
 )
 
