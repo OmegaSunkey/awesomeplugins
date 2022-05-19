@@ -18,9 +18,9 @@ import com.discord.api.commands.ApplicationCommandType
 class SafeBooru : Plugin() {
     override fun start(context: Context) {
         commands.registerCommand("SafeBooru", "Search images in safebooru", commandoptions) {
-		val keyw: String = it.getString("tag") 
+		val keyw = it.getString("tag") 
 		val LOG: Logger = Logger("FC")
-		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=1&tags=${keywt}")
+		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=1&tags=${keyw}")
 		
 		val result = search.toString()
 		return@registerCommand CommandResult(result)
