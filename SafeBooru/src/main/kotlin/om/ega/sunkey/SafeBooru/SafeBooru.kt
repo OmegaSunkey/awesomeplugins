@@ -24,7 +24,7 @@ class SafeBooru : Plugin() {
 		//val LOG: Logger = Logger("FC")
 		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=1&tags=${keyw}")
 		
-		val end = ""
+		var end = ""
 		
 		val result = search.toString()
 		val matcher = Pattern.compile("file_url=\"(https:\\/\\/[\\w.\\/-]*)\"").matcher(result)
@@ -33,7 +33,7 @@ class SafeBooru : Plugin() {
 		-> 
 		end = res 
 		}
-		} else { val end = "no result" }
+		} else { var end = "no result" }
 		return@registerCommand CommandResult(end)
 	}
    }
