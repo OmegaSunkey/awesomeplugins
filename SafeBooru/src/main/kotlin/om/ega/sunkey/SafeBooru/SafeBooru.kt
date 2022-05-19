@@ -21,14 +21,18 @@ class SafeBooru : Plugin() {
     override fun start(context: Context) {
         commands.registerCommand("SafeBooru", "Search images in safebooru", commandoptions) {
 		val keyw = it.getString("tag") 
-		val LOG: Logger = Logger("FC")
+		//val LOG: Logger = Logger("FC")
 		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=1&tags=${keyw}")
+		
 		val end = ""
 		
 		val result = search.toString()
 		val matcher = Pattern.compile("file_url=\"(https:\\/\\/[\\w.\\/-]*)\"").matcher(result)
 		if(matcher.find()) { 
-		matcher.group(1)?.let { res -> end = res }
+		matcher.group(1)?.let { res 
+		-> 
+		end = res 
+		}
 		} else { val end = "no result" }
 		return@registerCommand CommandResult(end)
 	}
