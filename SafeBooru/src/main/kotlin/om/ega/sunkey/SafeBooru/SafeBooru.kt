@@ -40,8 +40,9 @@ val commandoptions = listOf(
 
 	fun booru(keywt: String) {
 		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=1&tags=${keywt}")
-		LOG.debug(search)
-		return search
+		//LOG.debug(search)
+		val r = search.toString()
+		return r
 	}
 
     override fun stop(context: Context) {
