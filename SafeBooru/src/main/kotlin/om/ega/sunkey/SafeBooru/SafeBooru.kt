@@ -12,6 +12,8 @@ import com.aliucord.annotations.AliucordPlugin
 import com.aliucord.entities.Plugin
 import com.aliucord.patcher.*
 
+import java.util.regex.Pattern
+
 import com.discord.api.commands.ApplicationCommandType
 
 @AliucordPlugin(requiresRestart = false)
@@ -23,7 +25,11 @@ class SafeBooru : Plugin() {
 		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=1&tags=${keyw}")
 		
 		val result = search.toString()
-		return@registerCommand CommandResult(result)
+		val matcher = Pattern.compile("file_url=\"(https:\\/\\/[\\w.\\/-]*)\"").matcher(result)
+		if(matcher.find) { 
+		val end = matcher.group(1)? 
+		} else { val end = "no result" }
+		return@registerCommand CommandResult(end)
 	}
    }
 
