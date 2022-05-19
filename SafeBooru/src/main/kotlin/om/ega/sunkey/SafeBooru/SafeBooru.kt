@@ -23,11 +23,12 @@ class SafeBooru : Plugin() {
 		val keyw = it.getString("tag") 
 		val LOG: Logger = Logger("FC")
 		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=1&tags=${keyw}")
+		val end = ""
 		
 		val result = search.toString()
 		val matcher = Pattern.compile("file_url=\"(https:\\/\\/[\\w.\\/-]*)\"").matcher(result)
-		if(matcher.find) { 
-		val end = matcher.group(1)? 
+		if(matcher.find()) { 
+		val end = matcher.group(1)?; 
 		} else { val end = "no result" }
 		return@registerCommand CommandResult(end)
 	}
