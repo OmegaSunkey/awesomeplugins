@@ -28,7 +28,7 @@ class SafeBooru : Plugin() {
 		val result = search.toString()
 		val matcher = Pattern.compile("file_url=\"(https:\\/\\/[\\w.\\/-]*)\"").matcher(result)
 		if(matcher.find()) { 
-		val end = matcher.group(1)?; 
+		matcher.group(1)?.let { res -> end = res }
 		} else { val end = "no result" }
 		return@registerCommand CommandResult(end)
 	}
