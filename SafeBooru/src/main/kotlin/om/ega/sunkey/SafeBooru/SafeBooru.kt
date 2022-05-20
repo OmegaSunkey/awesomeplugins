@@ -23,7 +23,7 @@ class SafeBooru : Plugin() {
 		val keyw = it.getString("tag") 
 		var number = it.getString("number")?.toInt()
 		//val LOG: Logger = Logger("FC")
-		val limit = it.getString("limit")?.toInt()
+		var limit = it.getString("limit")!!.toInt()
 		if (limit > 5) limit = 5 //hardcode limit because discord embedding limits it to 5 lolll
 		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=${limit}&pid=${number}&tags=${keyw}")
 		
