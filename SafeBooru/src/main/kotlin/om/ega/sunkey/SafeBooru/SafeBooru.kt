@@ -12,8 +12,6 @@ import com.aliucord.annotations.AliucordPlugin
 import com.aliucord.entities.Plugin
 import com.aliucord.patcher.*
 
-import kotlin.random.Random
-
 import java.util.regex.Pattern
 
 import com.discord.api.commands.ApplicationCommandType
@@ -23,7 +21,7 @@ class SafeBooru : Plugin() {
     override fun start(context: Context) {
         commands.registerCommand("SafeBooru", "Search images in safebooru", commandoptions) {
 		val keyw = it.getString("tag") 
-		var number = Random.nextInt(1, 10)
+		var number = it.getString("number").toInt()
 		//val LOG: Logger = Logger("FC")
 		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=1&pid=${number}&tags=${keyw}")
 		
@@ -31,21 +29,27 @@ class SafeBooru : Plugin() {
 		
 		val result = search.toString()
 		val matcher = Pattern.compile("file_url=\"(https:\\/\\/[\\w.\\/-]*)\"").matcher(result)
-		if(matcher.find()) { 
-		matcher.group(1)?.let { res 
-		-> 
-		end = res 
-		}
-		} else { var end = "no result" }
+		if (matcher.find()) { 
+		matcher.group(1)?.let { res -> end = res }
+		} else { end = "no result" }
 		return@registerCommand CommandResult(end)
 	}
    }
 
 val commandoptions = listOf(
 	Utils.createCommandOption(
-		ApplicationCommandType.STRING, "tag", "PLEASE insert the word you want to use in", null,
+		ApplicationCommandType.STRING, "tag", "PLEASE insert the tag you want to search.", null,
 		required = true,
 		default = true,
+		channelTypes = emptyList(),
+		choices = emptyList(),
+		subCommandOptions = emptyList(),
+		autocomplete = false
+	)
+	Utils.createCommandOption(
+		ApplicationCommandType.STRING, "number", "Insert the number of the image you want to send.", null,
+		required = true,
+		default = false,
 		channelTypes = emptyList(),
 		choices = emptyList(),
 		subCommandOptions = emptyList(),
