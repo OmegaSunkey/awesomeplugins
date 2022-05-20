@@ -23,16 +23,19 @@ class SafeBooru : Plugin() {
 		val keyw = it.getString("tag") 
 		var number = it.getString("number")?.toInt()
 		//val LOG: Logger = Logger("FC")
-		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=1&pid=${number}&tags=${keyw}")
+		val limit = it.getString("limit").toInt()
+		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=${limit}&pid=${number}&tags=${keyw}")
 		
-		var end = ""
+		
+		var end = arrayListOf<String>()
 		
 		val result = search.toString()
 		val matcher = Pattern.compile("file_url=\"(https:\\/\\/[\\w.\\/-]*)\"").matcher(result)
-		if (matcher.find()) { 
-		matcher.group(1)?.let { res -> end = res }
-		} else { end = "no result" }
-		return@registerCommand CommandResult(end)
+		while (matcher.find()) { 
+		matcher.group(1)?.let { res -> end.add(res) }
+		} 
+		val real = end.toString().replace("[", "").replace("]", "") //please dont ask about this horror code 
+		return@registerCommand CommandResult(real)
 	}
    }
 
@@ -48,6 +51,15 @@ val commandoptions = listOf(
 	),
 	Utils.createCommandOption(
 		ApplicationCommandType.STRING, "number", "Insert the number of the image you want to send.", null,
+		required = true,
+		default = false,
+		channelTypes = emptyList(),
+		choices = emptyList(),
+		subCommandOptions = emptyList(),
+		autocomplete = false
+	),
+	Utils.createCommandOption(
+		ApplicationCommandType.STRING, "limit", "Insert the limit of images you want to send.", null,
 		required = true,
 		default = false,
 		channelTypes = emptyList(),
