@@ -1,4 +1,4 @@
-version = "1.1.1" // Plugin version. Increment this to trigger the updater
+version = "1.1.2" // Plugin version. Increment this to trigger the updater
 description = "Search in SafeBooru." // Plugin description that will be shown to user
 
 aliucord {
@@ -12,6 +12,8 @@ aliucord {
         • Now you can set the amount of images you wanna send. Please note that doing limit=999 will do nothing, the site has a hardcode limit of 100. | Ahora puedes elegir la cantidad de imágenes que quieres enviar. Por favor recuerda que hacer limit=999 hará nada, el sitio tiene un limite forzado de 100. 
         # 1.1.1 
         • the comma wont show the rest of the images lmaooo | la coma no deja mostrar el resto de las imagenes 
+        # 1.1.2 
+        • "limit" limit is hardcoded to 5 because discord embedding is limied to 5 images lolll. | el limite de "limit" es 5 porque discord solo muestra hasta 5 imagenes.
     """.trimIndent())
     // Image or Gif that will be shown at the top of your changelog page
     //changelogMedia.set("https://cdn.discordapp.com/attachments/929565544334647356/957419019500146708/Screenshot_20220326-182112113.jpg")

@@ -24,6 +24,7 @@ class SafeBooru : Plugin() {
 		var number = it.getString("number")?.toInt()
 		//val LOG: Logger = Logger("FC")
 		val limit = it.getString("limit")?.toInt()
+		if (limit > 5) limit = 5 //hardcode limit because discord embedding limits it to 5 lolll
 		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=${limit}&pid=${number}&tags=${keyw}")
 		
 		
@@ -59,7 +60,7 @@ val commandoptions = listOf(
 		autocomplete = false
 	),
 	Utils.createCommandOption(
-		ApplicationCommandType.STRING, "limit", "Insert the limit of images you want to send.", null,
+		ApplicationCommandType.STRING, "limit", "Insert the limit of images you want to send. The limit is hardcoded to 5 because discord embedding limits it to 5.", null,
 		required = true,
 		default = false,
 		channelTypes = emptyList(),
