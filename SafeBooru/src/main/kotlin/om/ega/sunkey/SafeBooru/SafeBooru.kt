@@ -34,7 +34,7 @@ class SafeBooru : Plugin() {
 		while (matcher.find()) { 
 		matcher.group(1)?.let { res -> end.add(res) }
 		} 
-		val real = end.toString().replace("[", "").replace("]", "") //please dont ask about this horror code 
+		val real = end.toString().replace("[", "").replace("]", "").replace(",", "") //please dont ask about this horror code 
 		return@registerCommand CommandResult(real)
 	}
    }
