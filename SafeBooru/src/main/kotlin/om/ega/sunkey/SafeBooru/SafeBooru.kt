@@ -12,6 +12,8 @@ import com.aliucord.annotations.AliucordPlugin
 import com.aliucord.entities.Plugin
 import com.aliucord.patcher.*
 
+import kotlin.random.Random
+
 import java.util.regex.Pattern
 
 import com.discord.api.commands.ApplicationCommandType
@@ -21,8 +23,9 @@ class SafeBooru : Plugin() {
     override fun start(context: Context) {
         commands.registerCommand("SafeBooru", "Search images in safebooru", commandoptions) {
 		val keyw = it.getString("tag") 
+		var number = Random.nextInt(1, 10)
 		//val LOG: Logger = Logger("FC")
-		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=1&tags=${keyw}")
+		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=1&pid=${number}&tags=${keyw}")
 		
 		var end = ""
 		
