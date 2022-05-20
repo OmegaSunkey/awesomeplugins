@@ -21,7 +21,7 @@ class SafeBooru : Plugin() {
     override fun start(context: Context) {
         commands.registerCommand("SafeBooru", "Search images in safebooru", commandoptions) {
 		val keyw = it.getString("tag") 
-		var number = it.getString("number").toInt()
+		var number = it.getString("number")?.toInt()
 		//val LOG: Logger = Logger("FC")
 		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=1&pid=${number}&tags=${keyw}")
 		
