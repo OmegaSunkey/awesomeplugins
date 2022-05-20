@@ -45,7 +45,7 @@ val commandoptions = listOf(
 		choices = emptyList(),
 		subCommandOptions = emptyList(),
 		autocomplete = false
-	)
+	),
 	Utils.createCommandOption(
 		ApplicationCommandType.STRING, "number", "Insert the number of the image you want to send.", null,
 		required = true,
