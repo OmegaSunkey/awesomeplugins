@@ -1,4 +1,4 @@
-version = "1.1.2" // Plugin version. Increment this to trigger the updater
+version = "1.1.3" // Plugin version. Increment this to trigger the updater
 description = "Search in SafeBooru." // Plugin description that will be shown to user
 
 aliucord {
@@ -14,6 +14,8 @@ aliucord {
         • the comma wont show the rest of the images lmaooo | la coma no deja mostrar el resto de las imagenes 
         # 1.1.2 
         • "limit" limit is hardcoded to 5 because discord embedding is limied to 5 images lolll. | el limite de "limit" es 5 porque discord solo muestra hasta 5 imagenes.
+        # 1.1.3 
+        • I think this is the last release. Fixed a phrase. Also secret plugin for you: https://github.com/OmegaSunkey/awesomeplugins/blob/builds/Rule34.zip?raw=true | Creo que es la última actualización. Arreglé una frase. Además un plugin secreto para ti ↑
     """.trimIndent())
     // Image or Gif that will be shown at the top of your changelog page
     //changelogMedia.set("https://cdn.discordapp.com/attachments/929565544334647356/957419019500146708/Screenshot_20220326-182112113.jpg")
