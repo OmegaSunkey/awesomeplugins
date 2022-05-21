@@ -1,4 +1,4 @@
-package om.ega.sunkey.SafeBooru
+package om.ega.sunkey.Rule34
 
 import android.content.Context
 import com.aliucord.Utils
@@ -19,13 +19,13 @@ import com.discord.api.commands.ApplicationCommandType
 @AliucordPlugin(requiresRestart = false)
 class SafeBooru : Plugin() {
     override fun start(context: Context) {
-        commands.registerCommand("SafeBooru", "Search images in safebooru", commandoptions) {
+        commands.registerCommand("Rule34", "Search images in rule34.xxx", commandoptions) {
 		val keyw = it.getString("tag") 
 		var number = it.getString("number")?.toInt()
 		//val LOG: Logger = Logger("FC")
 		var limit = it.getString("limit")!!.toInt()
 		if (limit > 5) limit = 5 //hardcode limit because discord embedding limits it to 5 lolll
-		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=${limit}&pid=${number}&tags=${keyw}")
+		val search = Http.simpleGet("https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&limit=${limit}&pid=${number}&tags=${keyw}") 
 		
 		
 		var end = arrayListOf<String>()
