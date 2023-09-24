@@ -15,7 +15,7 @@ import com.discord.utilities.images.MGImages
 
 
 object APFP : AbstractDatabase() {
-    override val regex: String = ".*(https:\\/\\/.*?\\.gif).*(https:\\/\\/.*?\\.png|jpg)"
+    override val regex: String = ".*(https:\\/\\/.*\\.gif).*(https:\\/\\/.*\\.png|https:\\/\\/.*\\.jpg)"
     override val url: String = "https://raw.githubusercontent.com/OmegaSunkey/UserPFP-Discord/main/UserPFP.txt"
 
     override var data: String = ""
@@ -42,8 +42,7 @@ object APFP : AbstractDatabase() {
                     it.result = mapCache[id]?.let { it1 ->  if ((it.args[3] as Boolean)) it1.animated else it1.static
                 } else {
                     val matcher = Pattern.compile(
-                        id.toString() + regex,
-                        Pattern.DOTALL
+                        id.toString() + regex
                     ).matcher(data)
                     if (matcher.find()) {
                         mapCache[id] = PFP(matcher.group(2), matcher.group(1)).also {
