@@ -7,7 +7,7 @@ rootProject.name = "awesomeplugins"
 include(
     "StartupSound",
     "UserBG",
-    "UserPFP"
+    "UserPFP",
     "AliucordRenamer",
     "FanCopypasta",
     "SafeBooru",
