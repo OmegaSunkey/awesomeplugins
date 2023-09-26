@@ -15,7 +15,7 @@ import com.discord.utilities.images.MGImages
 
 
 object APFP : AbstractDatabase() {
-    override val regex: String = ".*(https:\\/\\/.*\\.gif).*(https:\\/\\/.*\\.png|https:\\/\\/.*\\.jpg)"
+    override val regex: String = ".*(https:\\/\\/[\\w.\\/-]*).*(https:\\/\\/[\\w.\\/-]*)" //.*(https:\\/\\/.*\\.gif).*(https:\\/\\/.*\\.png|https:\\/\\/.*\\.jpg)
     override val url: String = "https://raw.githubusercontent.com/OmegaSunkey/UserPFP-Discord/main/UserPFP.txt"
 
     override var data: String = ""
