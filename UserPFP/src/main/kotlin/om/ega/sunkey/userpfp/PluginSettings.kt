@@ -20,7 +20,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
     override fun onViewBound(view: View) {
         super.onViewBound(view)
         setActionBarTitle("UserPFP")
-        val textInput = TextInput(view.context)
+        val textInput = TextInput(view.context, "Refresh UserPFP db time (minutes)")
         //textInput.hint = "Refresh UserPFP database time (minutes)"
         textInput.editText!!.setText(
             settings.getLong("cacheTime", UserPFP.REFRESH_CACHE_TIME).toString()

@@ -26,7 +26,7 @@ class UserPFP : Plugin() {
         lateinit var APFP: APFP
 
         val log: Logger = Logger("UserPFP")
-        const val REFRESH_CACHE_TIME = (6 * 60).toLong()
+        const val REFRESH_CACHE_TIME = (1 * 60).toLong()
     }
 
     init {

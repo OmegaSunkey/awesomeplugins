@@ -51,7 +51,7 @@ abstract class AbstractDatabase() {
     }
 
     fun getCacheFile(ctx: Context): File {
-        return File(ctx.cacheDir, "${name}.css")
+        return File(ctx.cacheDir, "${name}.txt")
     }
 
     private fun ifRecache(lastModified: Long, settings: SettingsAPI): Boolean {
