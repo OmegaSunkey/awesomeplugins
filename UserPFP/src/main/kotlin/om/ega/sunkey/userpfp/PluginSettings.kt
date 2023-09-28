@@ -59,7 +59,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
         	view.context,
         	"Enable debug logs (experimental)",
         	"debugEnabled",
-        	true
+        	false
          )
         )
     }

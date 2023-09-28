@@ -24,6 +24,9 @@ object APFP : AbstractDatabase() {
     override val mapCache: MutableMap<Long, PFP> = HashMap()
     override val name: String = "APFP"
 
+    val defstatic = "https://cdn.discordapp.com/attachments/1155285807221977108/1157071813378048081/IMG_20230928_164900.png"
+    val defanim = "https://cdn.discordapp.com/attachments/1155285807221977108/1157071829828120686/IMG_20230928_165004.gif"
+
     override fun runPatches(patcher: PatcherAPI, settings: SettingsAPI) {
         patcher.patch(
             IconUtils::class.java.getDeclaredMethod(
@@ -46,10 +49,15 @@ object APFP : AbstractDatabase() {
                         id.toString() + regex
                     ).matcher(data)
                     if (matcher.find()) {
-                    	if (settings.getBool("debugEnabled", true)) UserPFP.log.debug(it.args[0].toString() + matcher.group(2) + matcher.group(1) + " id, animated, static")
+                    	if (settings.getBool("debugEnabled", false)) UserPFP.log.debug(it.args[0].toString() + " " + matcher.group(1) + " " + matcher.group(2) + " id, animated, static")
                         mapCache[id] = PFP(matcher.group(2), matcher.group(1)).also {
                                 it1 ->  if ((it.args[3] as Boolean)) it.result = it1.animated else it.result = it1.static
                         }
+                    } else {
+                    	mapCache[id] = PFP(defstatic, defanim).also {
+                    		it1 -> if((it.args[3] as Boolean)) it.result = it1.animated else it.result = it1.static
+                    		if (settings.getBool("debugEnabled", false)) UserPFP.log.debug(it.args[0].toString() + " faulty id")
+                    	}
                     }
                 }
 
