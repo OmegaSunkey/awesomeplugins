@@ -1,4 +1,4 @@
-version = "1.0.3"
+version = "1.0.4"
 description = "UserPFP, for animated profile pictures"
 
 aliucord {
@@ -11,7 +11,7 @@ aliucord {
 		- 1.0.2
 		Added debug setting for knowing when a pfp is incorrect
 		- 1.0.3
-		Added fallback pfp to be used when an error occurs while trying to load pfp
+		(Added fallback pfp to be used when an error occurs while trying to load pfp) disabled for now
 		Made debug logs setting be false by default
     """.trimIndent()
     )
