@@ -16,8 +16,8 @@ import com.discord.utilities.images.MGImages
 
 
 object APFP : AbstractDatabase() {
-    override val regex: String = ".*(https:\\/\\/[\\w.\\/-]*).*(https:\\/\\/[\\w.\\/-]*)" //.*(https:\\/\\/.*\\.gif).*(https:\\/\\/.*\\.png|https:\\/\\/.*\\.jpg)
-    override val url: String = "https://raw.githubusercontent.com/OmegaSunkey/UserPFP-Discord/main/UserPFP.txt"
+    override val regex: String = ".\\]\\).*?(https:\\/\\/[\\w.\\/-]*)" //".*(https:\\/\\/[\\w.\\/-]*).*(https:\\/\\/[\\w.\\/-]*)" //.*(https:\\/\\/.*\\.gif).*(https:\\/\\/.*\\.png|https:\\/\\/.*\\.jpg)
+    override val url: String = "https://raw.githubusercontent.com/Yeetov/USRPFP-Reborn/main/db/dist.css" //"https://raw.githubusercontent.com/OmegaSunkey/UserPFP-Discord/main/UserPFP.txt"
 
     override var data: String = ""
 
@@ -41,17 +41,18 @@ object APFP : AbstractDatabase() {
                         "nitroBanner",
                         true
                     )) return@Hook
+                if ((it.args[3] as Boolean) == false) return@Hook //if not main profile, unhook
                 val id = it.args[0] as Long
                 if (mapCache.containsKey(id))
-                    it.result = mapCache[id]?.let { it1 ->  if ((it.args[3] as Boolean)) it1.animated else it1.static
+                    it.result = mapCache[id]?.let { it1 -> it1.animated
                 } else {
                     val matcher = Pattern.compile(
                         id.toString() + regex
                     ).matcher(data)
                     if (matcher.find()) {
-                    	if (settings.getBool("debugEnabled", false)) UserPFP.log.debug(it.args[0].toString() + " " + matcher.group(1) + " " + matcher.group(2) + " id, animated, static")
-                        mapCache[id] = PFP(matcher.group(2), matcher.group(1)).also {
-                                it1 ->  if ((it.args[3] as Boolean)) it.result = it1.animated else it.result = it1.static
+                    	if (settings.getBool("debugEnabled", false)) UserPFP.log.debug(it.args[0].toString() + " " + matcher.group(1) + " id, animated, static")
+                        mapCache[id] = PFP(matcher.group(1)).also {
+                                it1 -> it.result = it1.animated
                         }
                     } /*else {
                     	mapCache[id] = PFP(defstatic, defanim).also {
@@ -78,5 +79,5 @@ object APFP : AbstractDatabase() {
             })
     }
 
-    data class PFP(val static: String, val animated: String)
+    data class PFP(val animated: String)
 }
