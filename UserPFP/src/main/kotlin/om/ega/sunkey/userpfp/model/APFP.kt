@@ -45,6 +45,7 @@ object APFP : AbstractDatabase() {
                         id.toString() + regex
                     ).matcher(data)
                     if (matcher.find()) {
+                    	if (settings.getBool("debugEnabled", true)) UserPFP.log.debug(matcher.group(2) + matcher.group(1) + " animated, static")
                         mapCache[id] = PFP(matcher.group(2), matcher.group(1)).also {
                                 it1 ->  if ((it.args[3] as Boolean)) it.result = it1.animated else it.result = it1.static
                         }

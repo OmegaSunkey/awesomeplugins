@@ -2,6 +2,7 @@ package om.ega.sunkey.userpfp
 
 import android.content.Context
 import com.aliucord.api.SettingsAPI
+import com.aliucord.Utils.createCheckedSetting
 import com.aliucord.views.TextInput
 import android.text.Editable
 import android.text.InputType
@@ -11,6 +12,7 @@ import com.aliucord.Utils
 import com.aliucord.fragments.SettingsPage
 import om.ega.sunkey.userpfp.model.APFP
 import com.aliucord.views.Button
+import com.discord.views.CheckedSetting
 import com.discord.utilities.view.text.TextWatcher
 import java.lang.Exception
 
@@ -53,6 +55,25 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
         }
         addView(textInput)
         addView(refreshCache)
+        addView(createCheckedSetting(
+        	view.context,
+        	"Enable debug logs (experimental)",
+        	"debugEnabled",
+        	true
+         )
+        )
     }
-
+    private fun createCheckedSetting(
+        ctx: Context,
+        title: String,
+        setting: String,
+        checked: Boolean
+    ): CheckedSetting {
+        val checkedSetting = createCheckedSetting(ctx, CheckedSetting.ViewType.SWITCH, title, null)
+        checkedSetting.isChecked = settings.getBool(setting, checked)
+        checkedSetting.setOnCheckedListener { check: Boolean? ->
+            settings.setBool(setting, check!!)
+        }
+        return checkedSetting
+    }
 }
