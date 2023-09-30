@@ -1,4 +1,4 @@
-version = "1.1.0"
+version = "1.1.1"
 description = "UserPFP, for animated profile pictures"
 
 aliucord {
@@ -16,6 +16,8 @@ aliucord {
 		- 1.1.0
 		Switch to USRPFP database, which is used on Vencord and Vendetta.
 		Unhook while on ChatView, to evade lag and crashes.
+		- 1.1.1
+		Make UserPFP work with SquareAvatars.
     """.trimIndent()
     )
     author("HalalKing", 0)
