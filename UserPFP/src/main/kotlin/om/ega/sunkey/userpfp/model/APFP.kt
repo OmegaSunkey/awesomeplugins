@@ -2,10 +2,12 @@ package om.ega.sunkey.userpfp.model
 
 import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.RoundRectShape
 import android.graphics.drawable.shapes.OvalShape
 import android.widget.ImageView
 import com.aliucord.api.PatcherAPI
 import com.aliucord.api.SettingsAPI
+import com.aliucord.PluginManager
 import com.aliucord.patcher.Hook
 import com.discord.utilities.icon.IconUtils
 import com.facebook.drawee.view.SimpleDraweeView
@@ -73,10 +75,19 @@ object APFP : AbstractDatabase() {
                 simpleDraweeView.apply {
                     hierarchy.n(s.l)
                     clipToOutline = true
-                    background =
+                    background = if(PluginManager.isPluginEnabled("SquareAvatars")) {
+                    	ShapeDrawable(RoundRectShape(RoundValue(), null, null)).apply { paint.color = Color.TRANSPARENT }
+                    } else {
                         ShapeDrawable(OvalShape()).apply { paint.color = Color.TRANSPARENT }
+                    }
                 }
             })
+    }
+
+    fun RoundValue(): FloatArray {
+    	val SquareSettings = PluginManager.plugins.get("SquareAvatars")!!.settings!!.getInt("roundCorners", 3)
+    	val FloatValue = FloatArray (8) {SquareSettings!!.toFloat()}
+    	return FloatValue
     }
 
     data class PFP(val animated: String)
