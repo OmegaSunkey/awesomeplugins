@@ -2,7 +2,11 @@
 
 omegasunkey did it on mobile !!!!
 
-Kirigiri theme
+## Looking for UserPFP and UserBG guides?
+
+Click [here](https://github.com/OmegaSunkey/awesomeplugins/blob/main/UserPFP/src/main/kotlin/om/ega/sunkey/userpfp/README.md) for the UserPFP guide and [here](https://github.com/OmegaSunkey/awesomeplugins/blob/main/UserBG/src/main/kotlin/om/ega/sunkey/userbg/README.md) for the UserBG guide
+
+## Kirigiri theme
 
 ![Kirigiri theme in aliucord](https://cdn.discordapp.com/attachments/422142723651403786/962809386126958612/IMG_20220409_153902.png)
 
