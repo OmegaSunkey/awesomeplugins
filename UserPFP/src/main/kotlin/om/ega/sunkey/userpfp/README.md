@@ -20,4 +20,4 @@ Por favor unete al servidor de discord indicado arriba y sube la foto de perfil 
 Necesitas seguir los lineamientos para tener tu foto.
 
 ## Creditos
-Todos los creditos a HalalKing, pues el hizo APFP y yo simplemente lo arreglé y actualicé.
+Todos los creditos a HalalKing, pues el hizo APFP (para una base de datos especifica que no existe) y yo simplemente lo arreglé y actualicé.
