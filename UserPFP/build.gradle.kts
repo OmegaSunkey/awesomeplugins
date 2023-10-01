@@ -1,4 +1,4 @@
-version = "1.1.1"
+version = "1.1.2"
 description = "UserPFP, for animated profile pictures"
 
 aliucord {
@@ -18,6 +18,8 @@ aliucord {
 		Unhook while on ChatView, to evade lag and crashes.
 		- 1.1.1
 		Make UserPFP work with SquareAvatars.
+		- 1.1.2
+		Use data.json instead of dist.css because it updates faster
     """.trimIndent()
     )
     author("HalalKing", 0)
