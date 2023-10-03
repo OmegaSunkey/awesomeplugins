@@ -1,4 +1,4 @@
-version = "1.1.3"
+version = "1.1.4"
 description = "UserPFP, for animated profile pictures"
 
 aliucord {
@@ -22,6 +22,8 @@ aliucord {
 		Use data.json instead of dist.css because it updates faster
 		- 1.1.3
 		Sometimes the plugin would show a badge instead of the avatar, this is fixed now
+		- 1.1.4
+		Changed DB url to UserPFP/UserPFP/main/source/data.json
     """.trimIndent()
     )
     author("HalalKing", 0)

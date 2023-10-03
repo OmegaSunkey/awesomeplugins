@@ -18,8 +18,8 @@ import com.discord.utilities.images.MGImages
 
 
 object APFP : AbstractDatabase() {
-    override val regex: String = ".*(https?:\\/\\/.*Avatars.*(?:gif|png|jpe?g|webp))" //".*(https:\\/\\/[\\w.\\/-]*).*(https:\\/\\/[\\w.\\/-]*)" //.*(https:\\/\\/.*\\.gif).*(https:\\/\\/.*\\.png|https:\\/\\/.*\\.jpg)
-    override val url: String = "https://raw.githubusercontent.com/Yeetov/USRPFP-Reborn/main/db/data.json" //"https://raw.githubusercontent.com/OmegaSunkey/UserPFP-Discord/main/UserPFP.txt"
+    override val regex: String = ".*(https?:.*Avatars.*(?:gif|png|jpe?g|webp))" //".*(https:\\/\\/[\\w.\\/-]*).*(https:\\/\\/[\\w.\\/-]*)" //.*(https:\\/\\/.*\\.gif).*(https:\\/\\/.*\\.png|https:\\/\\/.*\\.jpg)
+    override val url: String = "https://raw.githubusercontent.com/UserPFP/UserPFP/main/source/data.json" //"https://raw.githubusercontent.com/OmegaSunkey/UserPFP-Discord/main/UserPFP.txt"
 
     override var data: String = ""
 
