@@ -4,7 +4,7 @@ This plugin allows you to use animated profile pictures in Aliucord.
 
 ## how to get?!?!
 
-Please join https://discord.gg/T5UPsgnKvG and upload your pfp (animated or static) to #pfp-requests.
+Please join https://dsc.gg/USRPFP and upload your pfp (animated or static) to #pfp-requests.
 Follow the requirements or you will be disallowed to have one. You will get a ping in #pfp-status when your pfp is allowed. When that happens, click Redownload Databases.
 
 ## Credits
