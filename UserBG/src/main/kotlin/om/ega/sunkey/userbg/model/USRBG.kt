@@ -10,11 +10,9 @@ import com.discord.utilities.icon.IconUtils
 import com.discord.widgets.user.profile.UserProfileHeaderViewModel
 import java.util.regex.Pattern
 
-//i've read this code so many times i will comment everything
-
 object USRBG : AbstractDatabase() {
     override val regex: String = ".*?\"(http?s:\\/\\/[\\w.\\/-]*)\""
-    override val url: String = "https://raw.githubusercontent.com/Discord-Custom-Covers/usrbg/master/dist/usrbg.json"
+    override val url: String = "https://usrbg.is-hardly.online/users"
 
     override var data: String = ""
 
@@ -28,26 +26,24 @@ object USRBG : AbstractDatabase() {
                 Long::class.javaPrimitiveType,
                 String::class.java,
                 Integer::class.java,
-                Boolean::class.javaPrimitiveType //gets all classes to patch including url and id 
+                Boolean::class.javaPrimitiveType 
             ), Hook {
 		
                 if (it.result != null && settings.getBool(
                         "nitroBanner",
                         true
                     ) && bannerMatch.matcher(it.result.toString()).find()
-                ) return@Hook   // could not get USRBG database in time or wasn't available
+                ) return@Hook   // explode
 
                 val id = it.args[0] as Long
                 if (mapCache.containsKey(id)) it.result = mapCache[id] else {
                     val matcher = Pattern.compile(
-                        id.toString() + regex,
+                        id.toString(),
                         Pattern.DOTALL
-                    ).matcher(data) //matches banner url with id
+                    ).matcher(data) //matches id
                     if (matcher.find()) {
-                        matcher.group(1)?.let { it1 ->
-                            mapCache[id] = it1
-                            it.result = it1 //inserts the result that is in the group1 on regex 
-                        }
+                            mapCache[id] = "https://usrbg.is-hardly.online/usrbg/v2/" + id.toString()
+                            it.result = "https://usrbg.is-hardly.online/usrbg/v2/" + id.toString() //inserts the result
                     }
                 } 
             }

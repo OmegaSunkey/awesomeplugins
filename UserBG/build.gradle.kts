@@ -1,4 +1,4 @@
-version = "1.0.7"
+version = "1.0.8"
 description = "UserBG"
 
 aliucord {
@@ -14,7 +14,9 @@ aliucord {
 	# 1.0.6
 	* fixed links being not clickable / arreglé los links soy tonto waaa 
 	# 1.0.7
-	* fixed text color / le quité el color feo al texto 
+	* fixed text color / le quité el color feo al texto
+	# 1.0.8
+	* Switch to new database ✅ / Se cambió a la nueva base de datos ✅✅✅✅✅✅
     """.trimIndent()
     )
     author("HalalKing", 0)
