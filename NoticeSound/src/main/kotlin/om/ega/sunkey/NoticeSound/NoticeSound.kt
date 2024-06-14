@@ -18,7 +18,7 @@ class NoticeSound : Plugin() {
 	}
 	override fun start(context: Context) {
 	  val ping = File(settings.getString("sonido", "/sdcard/Aliucord/ping.mp3"))
-	  if(!ping.exists()) Http.simpleDownload(settings.getString("sonido", "https://github.com/OmegaSunkey/awesomeplugins/raw/main/ping.mp3"), File("/sdcard/Aliucord/ping.mp3"))
+	  if(!ping.exists()) Utils.threadPool.execute { Http.simpleDownload(settings.getString("sonido", "https://github.com/OmegaSunkey/awesomeplugins/raw/main/ping.mp3"), File("/sdcard/Aliucord/ping.mp3")) }
 	  patcher.after<NoticePopup>("getAutoDismissAnimator", Integer::class.java, Function0::class.java){
             sound(settings.getString("sonido", "/sdcard/Aliucord/ping.mp3"))
 	  }
