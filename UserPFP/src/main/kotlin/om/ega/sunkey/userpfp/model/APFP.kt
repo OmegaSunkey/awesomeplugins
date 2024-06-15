@@ -28,6 +28,8 @@ object APFP : AbstractDatabase() {
     override val mapCache: MutableMap<Long, PFP> = HashMap()
     override val name: String = "APFP"
 
+    var hash = List(20){Random.nextInt(1, 10)}.joinToString("")
+
     override fun runPatches(patcher: PatcherAPI, settings: SettingsAPI) {
         patcher.patch(
             IconUtils::class.java.getDeclaredMethod(
@@ -86,7 +88,6 @@ object APFP : AbstractDatabase() {
 
     fun getStatic(gif: String): String {
     	val encoded = URLEncoder.encode(gif, "UTF-8")
-	var hash = List(20){Random.nextInt(1, 10)}.joinToString("")
         return "https://static-gif.nexpid.workers.dev/convert.gif?url=" + "$encoded" + "&_=$hash"
     }
 
