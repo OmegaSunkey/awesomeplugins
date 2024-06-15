@@ -1,4 +1,4 @@
-version = "1.2.0"
+version = "1.2.1"
 description = "UserPFP, for animated profile pictures"
 
 aliucord {
@@ -26,6 +26,8 @@ aliucord {
 		Changed DB url to UserPFP/UserPFP/main/source/data.json
 		- 1.2.0
 		Use a worker for getting a static version of your UserPFP, now you can see your UaerPFP in chat without Aliucord exploding!
+		- 1.2.1
+		fix insane bug that spammed logs with null cast
     """.trimIndent()
     )
     author("HalalKing", 0)
