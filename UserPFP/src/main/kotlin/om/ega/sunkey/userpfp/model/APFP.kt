@@ -16,6 +16,7 @@ import java.util.regex.Pattern
 import b.f.g.e.s
 import om.ega.sunkey.userpfp.UserPFP
 import com.discord.utilities.images.MGImages
+import kotlin.random.Random
 
 
 object APFP : AbstractDatabase() {
