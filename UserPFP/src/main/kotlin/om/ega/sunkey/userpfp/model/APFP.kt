@@ -5,6 +5,7 @@ import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RoundRectShape
 import android.graphics.drawable.shapes.OvalShape
 import android.widget.ImageView
+import java.net.URLEncoder
 import com.aliucord.api.PatcherAPI
 import com.aliucord.api.SettingsAPI
 import com.aliucord.PluginManager
@@ -26,9 +27,6 @@ object APFP : AbstractDatabase() {
     override val mapCache: MutableMap<Long, PFP> = HashMap()
     override val name: String = "APFP"
 
-    val defstatic = "https://cdn.discordapp.com/attachments/1155285807221977108/1157071813378048081/IMG_20230928_164900.png"
-    val defanim = "https://cdn.discordapp.com/attachments/1155285807221977108/1157071829828120686/IMG_20230928_165004.gif"
-
     override fun runPatches(patcher: PatcherAPI, settings: SettingsAPI) {
         patcher.patch(
             IconUtils::class.java.getDeclaredMethod(
@@ -43,25 +41,20 @@ object APFP : AbstractDatabase() {
                         "nitroBanner",
                         true
                     )) return@Hook
-                if ((it.args[3] as Boolean) == false) return@Hook //if not main profile, unhook
+                //if ((it.args[3] as Boolean) == false) return@Hook if not main profile, unhook
                 val id = it.args[0] as Long
-                if (mapCache.containsKey(id))
-                    it.result = mapCache[id]?.let { it1 -> it1.animated
+                if (mapCache.containsKey(id)) it.result = mapCache[id]?.let { 
+		    it1 -> if ((it.args[3] as Boolean)) it1.animated else it1.static
                 } else {
                     val matcher = Pattern.compile(
                         id.toString() + regex
                     ).matcher(data)
                     if (matcher.find()) {
-                    	if (settings.getBool("debugEnabled", false)) UserPFP.log.debug(it.args[0].toString() + " " + matcher.group(1) + " id, animated, static")
-                        mapCache[id] = PFP(matcher.group(1)).also {
-                                it1 -> it.result = it1.animated
+                    	if (settings.getBool("debugEnabled", false)) UserPFP.log.debug(it.args[0].toString() + getStatic(matcher.group(1)) + matcher.group(1) + " id, animated, static")
+                        mapCache[id] = PFP(matcher.group(1), getStatic(matcher.group(1))).also {
+                                it1 -> if ((it.args[3] as Boolean)) it.result = it1.animated else it1.static
                         }
-                    } /*else {
-                    	mapCache[id] = PFP(defstatic, defanim).also {
-                    		it1 -> if((it.args[3] as Boolean)) it.result = it1.animated else it.result = it1.static
-                    		if (settings.getBool("debugEnabled", false)) UserPFP.log.debug(it.args[0].toString() + " faulty id")
-                    	}
-                    }*/
+                    } 
                 }
 
             }
@@ -90,5 +83,11 @@ object APFP : AbstractDatabase() {
     	return FloatValue
     }
 
-    data class PFP(val animated: String)
+    fun getStatic(gif: String): String {
+    	val encoded = URLEncoder.encode(gif, "UTF-8")
+	var hash = List(20){Random.nextInt(1, 10)}.joinToString("")
+        return "https://static-gif.nexpid.workers.dev/convert.gif?url=" + "$encoded" + "&_=$hash"
+    }
+
+    data class PFP(val animated: String, val static: String)
 }
