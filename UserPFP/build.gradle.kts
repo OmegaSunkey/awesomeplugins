@@ -1,4 +1,4 @@
-version = "1.1.4"
+version = "1.2.0"
 description = "UserPFP, for animated profile pictures"
 
 aliucord {
@@ -24,6 +24,8 @@ aliucord {
 		Sometimes the plugin would show a badge instead of the avatar, this is fixed now
 		- 1.1.4
 		Changed DB url to UserPFP/UserPFP/main/source/data.json
+		- 1.2.0
+		Use a worker for getting a static version of your UserPFP, now you can see your UaerPFP in chat without Aliucord exploding!
     """.trimIndent()
     )
     author("HalalKing", 0)
