@@ -43,7 +43,7 @@ class PluginSettings(private val settings: SettingsAPI) : SettingsPage() {
         refreshCache.setOnClickListener { button: View? ->
             Utils.threadPool.execute {
                 Utils.showToast("Downloading databases...")
-                context?.let { UserPFP.APFP.getCacheFile(it) }?.let { UserPFP.APFP.downloadDB(it) }
+                context?.let { UserPFP.APFP.getCacheFile() }?.let { UserPFP.APFP.downloadDB(it) }
                 Utils.showToast("Downloaded databases.")
 
                 with(UserPFP.APFP) {
