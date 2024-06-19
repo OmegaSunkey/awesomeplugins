@@ -15,7 +15,7 @@ class UserPFP : Plugin() {
     }
     @Throws(NoSuchMethodException::class)
     override fun start(ctx: Context) {
-        APFP.init(ctx, settings, patcher)
+        APFP.init(settings, patcher)
     }
 
     override fun stop(ctx: Context) {

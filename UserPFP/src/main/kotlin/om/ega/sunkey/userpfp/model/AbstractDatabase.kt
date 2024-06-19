@@ -1,6 +1,5 @@
 package om.ega.sunkey.userpfp.model
 
-import android.content.Context
 import com.aliucord.Http
 import com.aliucord.Utils
 import com.aliucord.api.PatcherAPI
@@ -17,14 +16,14 @@ abstract class AbstractDatabase() {
     abstract val mapCache: MutableMap<Long, *>
     abstract val name: String
 
-    open fun init(ctx: Context, settings: SettingsAPI, patcher: PatcherAPI) {
-        loadDB(ctx, settings)
+    open fun init(settings: SettingsAPI, patcher: PatcherAPI) {
+        loadDB(settings)
         runPatches(patcher, settings)
     }
 
-    private fun loadDB(ctx: Context, settings: SettingsAPI) {
+    private fun loadDB(settings: SettingsAPI) {
         Utils.threadPool.execute {
-            getCacheFile(ctx).let {
+            getCacheFile().let {
                 it.createNewFile()
 
                 data = loadFromCache(it)
@@ -50,8 +49,8 @@ abstract class AbstractDatabase() {
         return String(IOUtils.readBytes(FileInputStream(it)))
     }
 
-    fun getCacheFile(ctx: Context): File {
-        return File(ctx.cacheDir, "${name}.txt")
+    fun getCacheFile(): File {
+        return File("/sdcard/Aliucord/${name}.txt")
     }
 
     private fun ifRecache(lastModified: Long, settings: SettingsAPI): Boolean {
