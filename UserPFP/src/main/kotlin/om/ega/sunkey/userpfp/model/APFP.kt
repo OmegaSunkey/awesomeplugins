@@ -53,7 +53,7 @@ object APFP : AbstractDatabase() {
                         id.toString() + regex
                     ).matcher(data)
                     if (matcher.find()) {
-                    	if (settings.getBool("debugEnabled", false)) UserPFP.log.debug(it.args[0].toString() + getStatic(matcher.group(1)) + matcher.group(1) + " id, animated, static")
+                    	if (settings.getBool("debugEnabled", false)) UserPFP.log.debug(it.args[0].toString() + getStatic(matcher.group(1)) + matcher.group(1) + " id, static, animated")
                         mapCache[id] = PFP(matcher.group(1), getStatic(matcher.group(1))).also {
                                 it1 -> if ((it.args[3] as Boolean)) it.result = it1.animated else it1.static
                         }
@@ -64,9 +64,15 @@ object APFP : AbstractDatabase() {
         )
 
         patcher.patch(
-            IconUtils::class.java.getDeclaredMethod("setIcon", ImageView::class.java, String::class.java, Int::class.javaPrimitiveType, Int::class.javaPrimitiveType, Boolean::class.javaPrimitiveType, Function1::class.java, MGImages.ChangeDetector::class.java), Hook {
+            IconUtils::class.java.getDeclaredMethod("setIcon", 
+	    	ImageView::class.java, String::class.java, 
+	    	Int::class.javaPrimitiveType, 
+	    	Int::class.javaPrimitiveType, 
+	    	Boolean::class.javaPrimitiveType, 
+	    	Function1::class.java, 
+	    	MGImages.ChangeDetector::class.java
+	    ), Hook {
                 if (it.args[1] == null || (it.args[1] as String).contains("https://cdn.discordapp.com/role-icons")) return@Hook
-		UserPFP.log.debug("arg1 is " + it.args[1] + "is this the cause of your issues?")
 
                 val simpleDraweeView = it.args[0] as SimpleDraweeView
                 simpleDraweeView.apply {

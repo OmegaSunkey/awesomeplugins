@@ -1,4 +1,4 @@
-version = "1.2.1"
+version = "1.2.2"
 description = "UserPFP, for animated profile pictures"
 
 aliucord {
@@ -28,6 +28,8 @@ aliucord {
 		Use a worker for getting a static version of your UserPFP, now you can see your UaerPFP in chat without Aliucord exploding!
 		- 1.2.1
 		fix insane bug that spammed logs with null cast
+		- 1.2.2
+		changed regex; apfp downloads in aliucord dir instead of secret cache dir
     """.trimIndent()
     )
     author("HalalKing", 0)
