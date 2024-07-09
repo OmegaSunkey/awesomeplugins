@@ -12,6 +12,7 @@ include(
     "FanCopypasta",
     "SafeBooru",
     "Rule34",
-    "NoticeSound"
+    "NoticeSound",
+    "POC-DONTINSTALL"
 )
 
