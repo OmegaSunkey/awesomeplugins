@@ -13,6 +13,6 @@ include(
     "SafeBooru",
     "Rule34",
     "NoticeSound",
-    "POC-DONTINSTALL"
+    "Hispanizador"
 )
 
