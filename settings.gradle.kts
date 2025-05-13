@@ -13,6 +13,7 @@ include(
     "SafeBooru",
     "Rule34",
     "NoticeSound",
-    "Hispanizador"
+    "Hispanizador",
+    "ForceSlashCommandsFixNOW"
 )
 
