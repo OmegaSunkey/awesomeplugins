@@ -94,8 +94,7 @@ object APFP : AbstractDatabase() {
     }
 
     fun getStatic(gif: String): String {
-    	val encoded = URLEncoder.encode(gif, "UTF-8")
-        return "https://static-gif.nexpid.workers.dev/convert.gif?url=" + "$encoded" + "&_=$hash"
+	if (gif.contains(".gif")) return gif.replace("gif", "png") else return gif
     }
 
     data class PFP(val animated: String, val static: String)
