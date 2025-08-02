@@ -78,7 +78,7 @@ object APFP : AbstractDatabase() {
                 simpleDraweeView.apply {
                     hierarchy.n(s.l)
                     clipToOutline = true
-                    background = if(PluginManager.isPluginEnabled("SquareAvatars")) {
+                    background = if(PluginManager.plugins.containsKey("SquareAvatars") && PluginManager.isPluginEnabled("SquareAvatars")) {
                     	ShapeDrawable(RoundRectShape(RoundValue(), null, null)).apply { paint.color = Color.TRANSPARENT }
                     } else {
                         ShapeDrawable(OvalShape()).apply { paint.color = Color.TRANSPARENT }
