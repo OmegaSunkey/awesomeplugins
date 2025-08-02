@@ -1,4 +1,4 @@
-version = "1.2.2"
+version = "1.2.3"
 description = "UserPFP, for animated profile pictures"
 
 aliucord {
@@ -30,6 +30,8 @@ aliucord {
 		fix insane bug that spammed logs with null cast
 		- 1.2.2
 		changed regex; apfp downloads in aliucord dir instead of secret cache dir
+		- 1.2.3
+		use static avatars provided by repo instead of deleted worker; fix bug with SquareAvatars
     """.trimIndent()
     )
     author("HalalKing", 0)
