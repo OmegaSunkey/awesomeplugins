@@ -14,6 +14,6 @@ include(
     "Rule34",
     "NoticeSound",
     "Hispanizador",
-    "ForceSlashCommandsFixNOW"
+    "ForceAliucordZip"
 )
 
