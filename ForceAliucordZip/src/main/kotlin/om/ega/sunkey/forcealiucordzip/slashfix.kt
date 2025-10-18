@@ -13,14 +13,15 @@ import com.aliucord.Constants
 import com.aliucord.Logger
 
 @AliucordPlugin(requiresRestart = true)
-class spanishbutton : Plugin() {
+class ForceAliucordFix : Plugin() {
+    val Logger = Logger("ForceAliucordFix")
     override fun start(c: Context) {
-    	val customzip = File(BASE_PATH, "Aliucord.zip")
+    	val customzip = File(Constants.BASE_PATH, "Aliucord.zip")
 	val currentzip = File(c.getCodeCacheDir(), "Aliucord.zip")
 	if(customzip.md5() == currentzip.md5()) {
 		Logger.debug("You are already using a custom build!")
 	} else {
-		Files.copy(customzip, currentzip, REPLACE_EXISTING)
+		Files.copy(customzip.toPath(), currentzip.toPath(), REPLACE_EXISTING)
 		Logger.debug("Replaced Aliucord build with custom build!")
 	}
     }
@@ -32,6 +33,6 @@ class spanishbutton : Plugin() {
     fun File.md5(): String {
         val md = MessageDigest.getInstance("MD5")
         val digest = md.digest(this.readBytes())
-        return digest.toHexString()
+        return digest.decodeToString()
     }
 }
