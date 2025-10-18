@@ -2,9 +2,9 @@ package om.ega.sunkey.forcealiucordzip
 
 import android.content.Context
 import java.io.File
-import java.nio.Files
+import java.nio.file.Files
 import java.security.MessageDigest
-import java.nio.File.StandardCopyOption.REPLACE_EXISTING
+import java.nio.file.StandardCopyOption.REPLACE_EXISTING
 import com.aliucord.annotations.AliucordPlugin
 import com.aliucord.entities.Plugin
 import com.aliucord.Http
