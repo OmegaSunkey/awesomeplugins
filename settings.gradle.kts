@@ -14,6 +14,7 @@ include(
     "Rule34",
     "NoticeSound",
     "Hispanizador",
-    "ForceAliucordZip"
+    "ForceAliucordZip",
+    "DMTabs"
 )
 
