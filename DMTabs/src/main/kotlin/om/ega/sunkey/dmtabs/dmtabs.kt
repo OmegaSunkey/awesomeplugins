@@ -22,6 +22,7 @@ class DMTabs : Plugin() {
     val Logger = Logger("DMTabs")
     override fun start(c: Context) {
 	patcher.before<`TabsHostBottomNavigationView$updateView$5`>("onClick", View::class.java) {
+		if(StoreStream.Companion!!.getTabsNavigation().getSelectedTab() == NavigationTab.FRIENDS) StoreStream.Companion!!.getTabsNavigation().selectTab(NavigationTab.HOME, false)
 		StoreStream.getGuildSelected().set(0L)
 		it.result = null	
 	}	
