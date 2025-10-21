@@ -12,7 +12,9 @@ import com.discord.widgets.tabs.NavigationTab
 import com.discord.stores.StoreStream
 import com.discord.stores.StoreChannelsSelected
 import com.discord.stores.StoreTabsNavigation
+import com.discord.stores.StoreNavigation
 import com.discord.api.channel.Channel
+import com.discord.api.channel.ChannelUtils
 
 import com.aliucord.annotations.AliucordPlugin
 import com.aliucord.entities.Plugin
@@ -27,10 +29,15 @@ class DMTabs : Plugin() {
     var shouldchangechannels = false
     override fun start(c: Context) {
 	patcher.before<`TabsHostBottomNavigationView$updateView$5`>("onClick", View::class.java) {
-		lastchannel = StoreChannelsSelected.`access$getSelectedChannel$p`(StoreStream.getChannelsSelected()).getId()
-		shouldchangechannels = true
-		if(StoreStream.Companion!!.getTabsNavigation().getSelectedTab() != NavigationTab.HOME) StoreStream.Companion!!.getTabsNavigation().selectTab(NavigationTab.HOME, false)
+		if(!ChannelUtils.m(StoreStream.getChannelsSelected().getSelectedChannel())) {
+			lastchannel = StoreStream.getChannelsSelected().getSelectedChannel().k()
+			shouldchangechannels = true
+		}
+		if(StoreStream.Companion!!.getTabsNavigation().getSelectedTab() != NavigationTab.HOME) {
+			StoreStream.Companion!!.getTabsNavigation().selectTab(NavigationTab.HOME, false)
+		}
 		StoreStream.getGuildSelected().set(0L)
+		StoreStream.Companion!!.getNavigation().setNavigationPanelAction(StoreNavigation.PanelAction.CLOSE)
 		it.result = null	
 	}	
 	patcher.patch(
