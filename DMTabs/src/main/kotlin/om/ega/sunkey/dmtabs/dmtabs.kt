@@ -31,10 +31,11 @@ class DMTabs : Plugin() {
 			GuildListItem::class.java,
 			Context::class.java,
 			FragmentManager::class.java
-		), Hook {
+		), PreHook {
 			if(it.args[0] is GuildListItem.FriendsItem) {	
 				StoreStream.Companion!!.getTabsNavigation().selectTab(NavigationTab.FRIENDS, false)
-			} else return@Hook
+				it.result = null
+			} else return@PreHook
 		}
 	)	
     }
