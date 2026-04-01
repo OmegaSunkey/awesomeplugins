@@ -13,6 +13,6 @@ aliucord {
 
     // Excludes this plugin from the updater, meaning it won't show up for users.
     // Set this if the plugin is unfinished
-    excludeFromUpdaterJson.set(false)
+    //excludeFromUpdaterJson.set(false)
     author("razertexz", 0)
 }
