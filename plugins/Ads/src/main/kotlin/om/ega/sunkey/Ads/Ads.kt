@@ -32,7 +32,7 @@ class Ads : Plugin() {
 		val uid = MemInfo.availMem + unixepoch
 		settings.setString("uid", uid.toString())
 		settings.setBool("registered", true)
-		LOG.debug(uid)
+		LOG.debug(uid.toString())
 		//Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/register?uid=${uid}")
 	}
 
