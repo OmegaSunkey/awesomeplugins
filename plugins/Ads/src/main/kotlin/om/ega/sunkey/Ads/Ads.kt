@@ -18,6 +18,7 @@ import com.aliucord.patcher.*
 import java.net.URLEncoder
 import java.util.regex.Pattern
 import java.util.regex.Matcher
+import java.util.concurrent.CopyOnWriteArrayList
 
 import com.discord.api.commands.ApplicationCommandType
 import com.discord.widgets.chat.list.adapter.WidgetChatListAdapterItemMessage
@@ -48,16 +49,17 @@ class Ads : Plugin() {
 		}
 	}
 	
-	val adlist = mutableListOf<String>()
+	val adlist = CopyOnWriteArrayList<String>()
 	Utils.threadPool.execute {
 		val AdsJSON = Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/getAd")
-		val adpattern = Pattern.compile("\\"ad\\":\\"\\(.*?\\)\\"\\}")
+		val adpattern = Pattern.compile("ad\":\"\\(.*?\\)\"\\}")
 		val admatch = adpattern.matcher(AdsJSON)
 		while(admatch.find()) {
 			LOG.debug(admatch.group() + admatch.group(1))
 			adlist.add(admatch.group(1))
 		}
 	}
+
 	patcher.after<WidgetChatListAdapterItemMessage>(
 		"onConfigure",
 		Int::class.java,
