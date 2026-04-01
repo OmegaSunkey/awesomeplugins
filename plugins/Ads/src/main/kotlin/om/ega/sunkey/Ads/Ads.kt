@@ -41,7 +41,7 @@ class Ads : Plugin() {
 		try {
 			Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/register?uid=${uid}")
 			settings.setBool("registered", true)
-		} catch {
+		} catch(e) {
 			LOG.error("Couldn't register !! WTF!?")
 		}
 	}
@@ -58,7 +58,7 @@ class Ads : Plugin() {
 		Int::class.java,
 		ChatListEntry::class.java
 	) { p ->
-		val entry = param.args[1] as MessageEntry
+		val entry = p.args[1] as MessageEntry
 		val message = entry.message
 		if (message.isLoading) return@after
 		message.embeds.removeAll {
