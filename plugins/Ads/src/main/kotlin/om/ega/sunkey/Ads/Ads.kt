@@ -41,7 +41,7 @@ class Ads : Plugin() {
 		try {
 			Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/register?uid=${uid}")
 			settings.setBool("registered", true)
-		} catch(e) {
+		} catch(e: Exception) {
 			LOG.error("Couldn't register !! WTF!?")
 		}
 	}
