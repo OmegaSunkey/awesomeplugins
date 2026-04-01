@@ -82,11 +82,12 @@ class Ads : Plugin() {
         commands.registerCommand("newad", "Insert a new ad for all Aliucord users to see", commandoptions) {
 		val adcontent = it.getString("content")
 		val encodedad = URLEncoder.encode(adcontent)
+		list.add(adcontent)
 		Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/newAd?ad=${encodedad}")
 		//val LOG: Logger = Logger("FC")
 		//LOG.debug(keyw)
 		//val copypasta = "if `${keyw}` has a million fans im one of them \nif `${keyw}` has 0 fans then I am no more \nif `${keyw}` has 1 fan that fan is me \nif the world is against `${keyw}` then I'm against the world"
-		return@registerCommand CommandResult("Your ad has been submitted! Aliucord users will now start seeing this ad.")
+		return@registerCommand CommandResult("Your ad has been submitted! Aliucord users will now start seeing this ad.", send = false)
 	}
    }
 
