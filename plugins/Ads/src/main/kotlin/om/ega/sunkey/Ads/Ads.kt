@@ -49,15 +49,13 @@ class Ads : Plugin() {
 	}
 	
 	val adlist = mutableListOf<String>()
-	val AdsJSON: String 
 	Utils.threadPool.execute {
-		AdsJSON = Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/getAd")
+		val AdsJSON = Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/getAd")
+		val admatch = Pattern.compile("ad\":\"\\(.*?\\)\"").matcher(AdsJSON)
+		while(admatch.find()) {
+			adlist.add(admatch.group())
+		}
 	}
-	val admatch = Pattern.compile("ad\":\"\\(.*?\\)\"").matcher(AdsJSON)
-	while(admatch.find()) {
-		adlist.add(admatch.group())
-	}
-
 	patcher.after<WidgetChatListAdapterItemMessage>(
 		"onConfigure",
 		Int::class.java,
