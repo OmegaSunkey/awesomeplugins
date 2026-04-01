@@ -51,9 +51,9 @@ class Ads : Plugin() {
 	
 	val adlist = CopyOnWriteArrayList<String>()
 	Utils.threadPool.execute {
-		val AdsJSON: String? = null
+		var AdsJSON: String? = null
 		val adpattern = Pattern.compile("\"ad\":\"(.*?)\"")
-		val admatch: Matcher? = null
+		var admatch: Matcher? = null
 		while(true) { 
 			AdsJSON = Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/getAd")
 			//val adpattern = Pattern.compile("\"ad\":\"(.*?)\"")
@@ -88,12 +88,12 @@ class Ads : Plugin() {
         commands.registerCommand("newad", "Insert a new ad for all Aliucord users to see", commandoptions) {
 		val adcontent = it.getString("content")
 		val encodedad = URLEncoder.encode(adcontent)
-		list.add(adcontent)
+		adlist.add(adcontent)
 		Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/newAd?ad=${encodedad}")
 		//val LOG: Logger = Logger("FC")
 		//LOG.debug(keyw)
 		//val copypasta = "if `${keyw}` has a million fans im one of them \nif `${keyw}` has 0 fans then I am no more \nif `${keyw}` has 1 fan that fan is me \nif the world is against `${keyw}` then I'm against the world"
-		return@registerCommand CommandResult("Your ad has been submitted! Aliucord users will now start seeing this ad.", send = false)
+		return@registerCommand CommandResult("Your ad has been submitted! Aliucord users will now start seeing this ad.", null, false)
 	}
    }
 
