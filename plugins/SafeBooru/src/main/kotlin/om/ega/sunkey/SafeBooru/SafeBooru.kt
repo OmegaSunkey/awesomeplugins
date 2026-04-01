@@ -81,8 +81,8 @@ val commandoptions = listOf(
     }
 }
 
-data class Autocomplete {
+/*data class Autocomplete {
 	val label: String,
 	val value: String
-}
+}*/
 
