@@ -53,7 +53,7 @@ class Ads : Plugin() {
 		val AdsJSON = Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/getAd")
 		val admatch = Pattern.compile("ad\":\"\\(.*?\\)\"").matcher(AdsJSON)
 		while(admatch.find()) {
-			adlist.add(admatch.group())
+			adlist.add(admatch.group(1))
 		}
 	}
 	patcher.after<WidgetChatListAdapterItemMessage>(
