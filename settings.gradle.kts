@@ -1,20 +1,32 @@
+@file:Suppress("UnstableApiUsage")
+
+pluginManagement {
+    repositories {
+        google()
+        gradlePluginPortal()
+        maven {
+            name = "aliucord"
+            url = uri("https://maven.aliucord.com/releases")
+        }
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            name = "aliucord"
+            url = uri("https://maven.aliucord.com/releases")
+        }
+    }
+}
+
 rootProject.name = "awesomeplugins"
+include(":plugins")
 
-// This file sets what projects are included. Every time you add a new project, you must add it
-// to the includes below.
-
-// Plugins are included like this
-include(
-    "StartupSound",
-    "UserBG",
-    "UserPFP",
-    "AliucordRenamer",
-    "FanCopypasta",
-    "SafeBooru",
-    "Rule34",
-    "NoticeSound",
-    "Hispanizador",
-    "ForceAliucordZip",
-    "DMTabs"
-)
-
+// Add each directory under ./plugins as a separate project
+rootDir.resolve("plugins")
+    .listFiles { file -> file.isDirectory && file.resolve("build.gradle.kts").exists() }!!
+    .forEach { include(":plugins:${it.name}") }

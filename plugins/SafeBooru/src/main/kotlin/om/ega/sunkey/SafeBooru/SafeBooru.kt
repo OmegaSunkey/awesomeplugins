@@ -79,4 +79,10 @@ val commandoptions = listOf(
     override fun stop(context: Context) {
         commands.unregisterAll()
     }
-} 
+}
+
+data class Autocomplete {
+	val label: String,
+	val value: String
+}
+
