@@ -51,12 +51,18 @@ class Ads : Plugin() {
 	
 	val adlist = CopyOnWriteArrayList<String>()
 	Utils.threadPool.execute {
-		val AdsJSON = Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/getAd")
+		val AdsJSON: String? = null
 		val adpattern = Pattern.compile("\"ad\":\"(.*?)\"")
-		val admatch = adpattern.matcher(AdsJSON)
-		while(admatch.find()) {
-			LOG.debug(admatch.group() + admatch.group(1))
-			adlist.add(admatch.group(1))
+		val admatch: Matcher? = null
+		while(true) { 
+			AdsJSON = Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/getAd")
+			//val adpattern = Pattern.compile("\"ad\":\"(.*?)\"")
+			admatch = adpattern.matcher(AdsJSON)
+			while(admatch.find()) {
+				LOG.debug(admatch.group() + admatch.group(1))
+				adlist.add(admatch.group(1))
+			}
+			Thread.sleep(60000)
 		}
 	}
 
