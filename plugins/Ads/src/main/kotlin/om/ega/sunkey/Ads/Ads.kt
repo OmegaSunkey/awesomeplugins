@@ -4,7 +4,7 @@ import android.content.Context
 import android.app.ActivityManager
 
 import com.aliucord.Utils
-//import com.aliucord.Logger
+import com.aliucord.Logger
 import com.aliucord.api.CommandsAPI
 import com.aliucord.api.CommandsAPI.CommandResult
 import com.aliucord.entities.CommandContext
@@ -20,17 +20,17 @@ import com.discord.api.commands.ApplicationCommandType
 
 @AliucordPlugin(requiresRestart = false)
 class Ads : Plugin() {
-    override fun start(context: Context) {
-	init {
-		settingsTab = SettingsTab(PluginSettings::class.java).withArgs(settings)
-	}
+    init {
+	settingsTab = SettingsTab(PluginSettings::class.java).withArgs(settings)
+    }
+    override fun start(context: Context) {	
 	val LOG = Logger("Ads")
 	if(!settings.getBool("registered", false)) {
 		val MemInfo = ActivityManager.MemoryInfo()
 		(context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager).getMemoryInfo(MemInfo)
 		val unixepoch = System.currentTimeMillis()
 		val uid = MemInfo.availMem + unixepoch
-		settings.setString("uid", uid)
+		settings.setString("uid", uid.toString())
 		settings.setBool("registered", true)
 		LOG.debug(uid)
 		//Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/register?uid=${uid}")
