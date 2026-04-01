@@ -1,0 +1,66 @@
+name: "Deploy"
+
+concurrency:
+  group: "deploy"
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    name: Build & Deploy Plugins
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          path: "src"
+
+      - name: Checkout builds
+        uses: actions/checkout@v6
+        with:
+          ref: "builds"
+          path: "builds"
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v5
+        with:
+          java-version: 21
+          distribution: temurin
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5
+
+      - name: Build
+        run: |
+          cd $GITHUB_WORKSPACE/src
+          chmod +x ./gradlew
+          ./gradlew make :generateUpdaterJson
+          
+          rm -f $GITHUB_WORKSPACE/builds/*.zip
+          cp $GITHUB_WORKSPACE/src/plugins/**/build/outputs/*.zip $GITHUB_WORKSPACE/builds/
+          cp $GITHUB_WORKSPACE/src/build/outputs/updater.json $GITHUB_WORKSPACE/builds/
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: plugins
+          if-no-files-found: error
+          path: ${{ github.workspace }}/src/plugins/**/build/outputs/*.zip
+
+      - name: Push builds
+        run: |
+          cd $GITHUB_WORKSPACE/builds
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git commit -m "Build $GITHUB_SHA" || exit 0   # do not error if nothing to commit
+          git push
