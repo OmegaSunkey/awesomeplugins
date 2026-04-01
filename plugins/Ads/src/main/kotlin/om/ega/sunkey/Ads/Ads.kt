@@ -51,7 +51,8 @@ class Ads : Plugin() {
 	val adlist = mutableListOf<String>()
 	Utils.threadPool.execute {
 		val AdsJSON = Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/getAd")
-		val admatch = Pattern.compile("ad\":\"\\(.*?\\)\"").matcher(AdsJSON)
+		val adpattern = Pattern.compile("ad\":\"\\(.*?\\)\"\\}")
+		val admatch = adpattern.matcher(AdsJSON)
 		while(admatch.find()) {
 			LOG.debug(admatch.group() + admatch.group(1))
 			adlist.add(admatch.group(1))
