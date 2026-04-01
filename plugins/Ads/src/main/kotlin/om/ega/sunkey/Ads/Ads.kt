@@ -39,7 +39,9 @@ class Ads : Plugin() {
 		settings.setString("uid", uid.toString())
 		//LOG.debug(uid.toString())
 		try {
-			Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/register?uid=${uid}")
+			Utils.threadPool.execute {
+				Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/register?uid=${uid}")
+			}
 			settings.setBool("registered", true)
 		} catch(e: Exception) {
 			LOG.debug("Couldn't register !! WTF!?")
@@ -47,7 +49,10 @@ class Ads : Plugin() {
 	}
 	
 	val adlist = mutableListOf<String>()
-	val AdsJSON = Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/getAd")
+	val AdsJSON: String 
+	Utils.threadPool.execute {
+		AdsJSON = Http.simpleGet("https://aliucord-ads.gdspikes.workers.dev/getAd")
+	}
 	val admatch = Pattern.compile("ad\":\"\\(.*?\\)\"").matcher(AdsJSON)
 	while(admatch.find()) {
 		adlist.add(admatch.group())
