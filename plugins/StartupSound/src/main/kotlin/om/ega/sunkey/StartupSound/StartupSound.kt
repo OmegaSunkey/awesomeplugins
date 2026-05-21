@@ -20,6 +20,7 @@ class StartupSound : Plugin() {
     init {
         settingsTab = SettingsTab(PluginSettings::class.java).withArgs(settings)
     }
+    var started = false
     override fun start(context: Context) {
         //val sound = File(settings.getString("sonido", "/sdcard/Aliucord/startup.mp3"))
         val sound = settings.getString("sonido", "/sdcard/Aliucord/startup.mp3")
@@ -51,22 +52,26 @@ class StartupSound : Plugin() {
     }
 
     private fun startupdiscord(startup: String) {
-        try {
-            Utils.threadPool.execute {
-                MediaPlayer().apply {
-                    setAudioAttributes(
-                        AudioAttributes.Builder()
-                            .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                            .setUsage(AudioAttributes.USAGE_MEDIA)
-                            .build()
-                    )
-                    setDataSource(startup)
-                    prepare()
-                    start()
+        if(!started) {
+            started = true
+            try {
+                Utils.threadPool.execute {
+                    Thread.sleep(1000)
+                    MediaPlayer().apply {
+                        setAudioAttributes(
+                            AudioAttributes.Builder()
+                                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                                .setUsage(AudioAttributes.USAGE_MEDIA)
+                                .build()
+                        )
+                        setDataSource(startup)
+                        prepare()
+                        start()
+                    }
                 }
+            } catch (e: Throwable) {
+                logger.error("UNABLE to play audio", e)
             }
-        } catch (e: Throwable) {
-            logger.error("UNABLE to play audio", e)
         }
     }
 
