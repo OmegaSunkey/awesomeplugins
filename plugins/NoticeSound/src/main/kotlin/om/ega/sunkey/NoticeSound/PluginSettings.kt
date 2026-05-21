@@ -16,7 +16,7 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 	override fun onViewBound(view: View) {
 		super.onViewBound(view)
 		setActionBarTitle("NoticeSound")
-                val texto = TextInput(view.context, "Añadir enlace / Set link")
+        val texto = TextInput(view.context, "Añadir enlace / Set link (saved as userping.mp3, dont worry)")
 		texto.editText.setText(
 			settings.getString("sonido", sonido)
 		)
@@ -24,10 +24,7 @@ class PluginSettings (private val settings: SettingsAPI) : SettingsPage() {
 		texto.editText.addTextChangedListener(object : TextWatcher() {
 			override fun afterTextChanged(editable: Editable) {
 				try {
-				        settings.setString("sonido",
-					java.lang.String.valueOf(editable)
-				)
-
+				    settings.setString("sonido", java.lang.String.valueOf(editable))
 				} catch (e: Exception) {
 					settings.setString("sonido", sonido)
 				}
