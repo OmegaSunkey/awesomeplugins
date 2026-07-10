@@ -34,7 +34,7 @@ object APFP : AbstractDatabase() {
         patcher.patch(
             IconUtils::class.java.getDeclaredMethod(
                 "getForUser",
-                java.lang.Long::class.java,
+                Long::class.javaObjectType,
                 String::class.java,
                 Integer::class.java,
                 Boolean::class.javaPrimitiveType,
@@ -47,31 +47,31 @@ object APFP : AbstractDatabase() {
                 //if ((it.args[3] as Boolean) == false) return@Hook if not main profile, unhook
                 val id = it.args[0] as Long
                 if (mapCache.containsKey(id)) it.result = mapCache[id]?.let { 
-		    it1 -> if ((it.args[3] as Boolean)) it1.animated else it1.static
+                    it1 -> if ((it.args[3] as Boolean)) it1.animated else it1.static
                 } else {
                     val matcher = Pattern.compile(
                         id.toString() + regex
                     ).matcher(data)
                     if (matcher.find()) {
-                    	if (settings.getBool("debugEnabled", false)) UserPFP.log.debug(it.args[0].toString() + getStatic(matcher.group(1)) + matcher.group(1) + " id, static, animated")
+                        if (settings.getBool("debugEnabled", false)) UserPFP.log.debug(it.args[0].toString() + getStatic(matcher.group(1)) + matcher.group(1) + " id, static, animated")
                         mapCache[id] = PFP(matcher.group(1), getStatic(matcher.group(1))).also {
-                                it1 -> if ((it.args[3] as Boolean)) it.result = it1.animated else it1.static
+                            it1 -> if ((it.args[3] as Boolean)) it.result = it1.animated else it1.static
                         }
                     } 
                 }
-
             }
         )
 
         patcher.patch(
             IconUtils::class.java.getDeclaredMethod("setIcon", 
-	    	ImageView::class.java, String::class.java, 
-	    	Int::class.javaPrimitiveType, 
-	    	Int::class.javaPrimitiveType, 
-	    	Boolean::class.javaPrimitiveType, 
-	    	Function1::class.java, 
-	    	MGImages.ChangeDetector::class.java
-	    ), Hook {
+            ImageView::class.java, 
+            String::class.java, 
+            Int::class.javaPrimitiveType, 
+            Int::class.javaPrimitiveType, 
+            Boolean::class.javaPrimitiveType, 
+            Function1::class.java, 
+            MGImages.ChangeDetector::class.java
+        ), Hook {
                 if (it.args[1] == null || (it.args[1] as String).contains("https://cdn.discordapp.com/role-icons")) return@Hook
 
                 val simpleDraweeView = it.args[0] as SimpleDraweeView
@@ -79,7 +79,7 @@ object APFP : AbstractDatabase() {
                     hierarchy.n(s.l)
                     clipToOutline = true
                     background = if(PluginManager.plugins.containsKey("SquareAvatars") && PluginManager.isPluginEnabled("SquareAvatars")) {
-                    	ShapeDrawable(RoundRectShape(RoundValue(), null, null)).apply { paint.color = Color.TRANSPARENT }
+                        ShapeDrawable(RoundRectShape(RoundValue(), null, null)).apply { paint.color = Color.TRANSPARENT }
                     } else {
                         ShapeDrawable(OvalShape()).apply { paint.color = Color.TRANSPARENT }
                     }
@@ -88,13 +88,13 @@ object APFP : AbstractDatabase() {
     }
 
     fun RoundValue(): FloatArray {
-    	val SquareSettings = PluginManager.plugins.get("SquareAvatars")!!.settings!!.getInt("roundCorners", 3)
-    	val FloatValue = FloatArray (8) {SquareSettings!!.toFloat()}
-    	return FloatValue
+        val SquareSettings = PluginManager.plugins.get("SquareAvatars")!!.settings!!.getInt("roundCorners", 3)
+        val FloatValue = FloatArray (8) {SquareSettings!!.toFloat()}
+        return FloatValue
     }
 
     fun getStatic(gif: String): String {
-	if (gif.contains(".gif")) return gif.replace("gif", "png") else return gif
+        if (gif.contains(".gif")) return gif.replace("gif", "png") else return gif
     }
 
     data class PFP(val animated: String, val static: String)

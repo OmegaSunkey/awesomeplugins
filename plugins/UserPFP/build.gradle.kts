@@ -1,4 +1,4 @@
-version = "1.2.3"
+version = "1.2.4"
 description = "UserPFP, for animated profile pictures"
 
 aliucord {
@@ -32,6 +32,8 @@ aliucord {
 		changed regex; apfp downloads in aliucord dir instead of secret cache dir
 		- 1.2.3
 		use static avatars provided by repo instead of deleted worker; fix bug with SquareAvatars
+        - 1.2.4
+        use Long::class.javaObjectType instead of java.lang.Long::class.java
     """.trimIndent()
     )
     author("HalalKing", 0)
